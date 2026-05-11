@@ -200,6 +200,71 @@
       margin-top: 0.4rem;
     }
 
+
+    /* ── CONTAGEM REGRESSIVA ── */
+    .countdown-wrap {
+      width: min(560px, 92vw);
+      margin: 2.2rem auto 0;
+      padding: 1.1rem 1.2rem;
+      border-top: 1px solid rgba(184,151,58,0.35);
+      border-bottom: 1px solid rgba(184,151,58,0.35);
+      opacity: 0;
+      animation: fadeUp 1s 1.7s forwards;
+    }
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.68rem);
+      letter-spacing: 0.42em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.9rem;
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+    }
+    .countdown-item {
+      text-align: center;
+      padding: 0.4rem 0.2rem;
+      border-right: 1px solid rgba(184,151,58,0.25);
+    }
+    .countdown-item:last-child { border-right: none; }
+    .countdown-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.65rem, 6vw, 2.7rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1;
+      display: block;
+    }
+    .countdown-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.48rem, 1.8vw, 0.58rem);
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.45rem;
+    }
+    @media (max-width: 520px) {
+      .countdown-wrap {
+        width: min(340px, 92vw);
+        padding: 1rem 0.7rem;
+        margin-top: 1.8rem;
+      }
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 0;
+      }
+      .countdown-item:nth-child(2) { border-right: none; }
+      .countdown-item:nth-child(1),
+      .countdown-item:nth-child(2) { border-bottom: 1px solid rgba(184,151,58,0.18); padding-bottom: 0.8rem; }
+      .countdown-item:nth-child(3),
+      .countdown-item:nth-child(4) { padding-top: 0.8rem; }
+    }
+
     .local-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -1007,11 +1072,34 @@
       </div>
     </div>
 
+    <div class="countdown-wrap" aria-label="Contagem regressiva para o casamento">
+      <span class="countdown-label">Faltam</span>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-number" id="countdown-days">--</span>
+          <span class="countdown-text">Dias</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="countdown-hours">--</span>
+          <span class="countdown-text">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="countdown-minutes">--</span>
+          <span class="countdown-text">Min</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="countdown-seconds">--</span>
+          <span class="countdown-text">Seg</span>
+        </div>
+      </div>
+    </div>
+
+
     <p class="local-text">Área Polo Clube · Franca, SP</p>
 
     <div class="scroll-cta">
       <p>Clique para saber mais</p>
-      <div class="scroll-arrow" onclick="scrollToSection('info')"></div>
+      <div class="scroll-arrow" onclick="scrollToSection('presenca')"></div>
     </div>
   </div>
 </section>
@@ -1408,6 +1496,43 @@
 </footer>
 
 <script>
+
+
+  // ── Contagem regressiva até 06/09/2026 às 12h
+  function atualizarContagemRegressiva() {
+    const destino = new Date('2026-09-06T12:00:00-03:00').getTime();
+    const agora = new Date().getTime();
+    const distancia = destino - agora;
+
+    const diasEl = document.getElementById('countdown-days');
+    const horasEl = document.getElementById('countdown-hours');
+    const minutosEl = document.getElementById('countdown-minutes');
+    const segundosEl = document.getElementById('countdown-seconds');
+
+    if (!diasEl || !horasEl || !minutosEl || !segundosEl) return;
+
+    if (distancia <= 0) {
+      diasEl.textContent = '00';
+      horasEl.textContent = '00';
+      minutosEl.textContent = '00';
+      segundosEl.textContent = '00';
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    diasEl.textContent = String(dias).padStart(2, '0');
+    horasEl.textContent = String(horas).padStart(2, '0');
+    minutosEl.textContent = String(minutos).padStart(2, '0');
+    segundosEl.textContent = String(segundos).padStart(2, '0');
+  }
+
+  atualizarContagemRegressiva();
+  setInterval(atualizarContagemRegressiva, 1000);
+
   // ── Glitter canvas no hero
   (function() {
     const canvas = document.getElementById('glitter-canvas');
