@@ -907,13 +907,13 @@
     <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
 
     <div class="info-grid">
-      <div class="info-card reveal">
+      <div class="info-card reveal" style="cursor:pointer;" onclick="adicionarAgenda()" title="Adicionar à agenda">
         <div class="info-card-corner tl"></div>
         <div class="info-card-corner tr"></div>
         <div class="info-card-corner bl"></div>
         <div class="info-card-corner br"></div>
         <span class="info-icon">📅</span>
-        <span class="info-card-title">Data</span>
+        <span class="info-card-title">Data — clique para salvar na agenda</span>
         <div class="info-card-value">06 de Setembro</div>
         <div class="info-card-sub">Domingo · 2026</div>
       </div>
@@ -1371,6 +1371,33 @@
   }
 
   // ── PIX tabs e copiar chave
+  // ── Adicionar à Agenda
+  function adicionarAgenda() {
+    document.getElementById('modal-agenda').style.display = 'flex';
+  }
+
+  function fecharModal() {
+    document.getElementById('modal-agenda').style.display = 'none';
+  }
+
+  function abrirAppleCalendar() {
+    // webcal:// é o protocolo nativo do iOS — abre direto no Apple Calendar
+    window.location.href = 'webcal://casamento.apoltecnologia.com.br/casamento.ics';
+    fecharModal();
+  }
+
+  function abrirGoogleCalendar() {
+    const url = 'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text=Casamento+Mateus+%26+P%C3%A2mella'
+      + '&dates=20260906T120000/20260906T220000'
+      + '&details=Festa+de+casamento+de+Mateus+%26+P%C3%A2mella.+Ades%C3%A3o%3A+R%24+80+por+pessoa.+Cooler+liberado!'
+      + '&location=Av.+Manoel+Jacinto+Netto+9009+Franca+SP'
+      + '&sf=true&output=xml';
+    window.open(url, '_blank');
+    fecharModal();
+  }
+
+
   function copiarPixSucesso() {
     const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
     navigator.clipboard.writeText(chave).then(() => {
@@ -1488,5 +1515,45 @@
     }
   }
 </script>
+
+<!-- Modal agenda -->
+<div id="modal-agenda" style="display:none; position:fixed; inset:0; z-index:999;
+  background:rgba(44,36,24,0.6); align-items:center; justify-content:center; padding:1.5rem;">
+  <div style="background:var(--cream); max-width:360px; width:100%; padding:2.5rem 2rem;
+    text-align:center; position:relative; border:1px solid rgba(184,151,58,0.4);">
+    <div class="info-card-corner tl"></div>
+    <div class="info-card-corner tr"></div>
+    <div class="info-card-corner bl"></div>
+    <div class="info-card-corner br"></div>
+
+    <button onclick="fecharModal()" style="position:absolute; top:0.8rem; right:1rem;
+      background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+
+    <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em;
+      color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1rem;">
+      Salvar na Agenda
+    </span>
+
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic;
+      color:var(--text-mid); margin-bottom:2rem; line-height:1.6;">
+      Escolha como salvar o evento<br>06 de Setembro · 12h00
+    </p>
+
+    <!-- Apple Calendar -->
+    <button onclick="abrirAppleCalendar()"
+      class="btn-gold"
+      style="display:block; width:100%; font-size:0.62rem; padding:1rem; margin-bottom:0.8rem; box-sizing:border-box; cursor:pointer;">
+      🍎 &nbsp; Apple Calendar (iPhone)
+    </button>
+
+    <!-- Google Calendar -->
+    <button onclick="abrirGoogleCalendar()"
+      class="btn-outline"
+      style="display:block; width:100%; font-size:0.62rem; padding:1rem; box-sizing:border-box; cursor:pointer;">
+      📅 &nbsp; Google Calendar
+    </button>
+  </div>
+</div>
+
 </body>
 </html>
