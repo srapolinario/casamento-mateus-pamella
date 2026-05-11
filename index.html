@@ -852,10 +852,10 @@
 <!-- Navegação por pontos -->
 <nav class="nav-dots" aria-label="Navegação por seções">
   <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
+  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
   <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
   <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
   <div class="nav-dot" data-section="cardapio" title="Cardápio" onclick="scrollToSection('cardapio')"></div>
-  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
   <div class="nav-dot" data-section="localizacao" title="Local" onclick="scrollToSection('localizacao')"></div>
 </nav>
 
@@ -898,6 +898,83 @@
     </div>
   </div>
 </section>
+
+<!-- ── CONFIRMAR PRESENÇA ── -->
+<section id="presenca">
+  <div class="section-inner">
+    <span class="section-label reveal">Sua presença é especial</span>
+    <h2 class="section-title reveal">Confirmar Presença</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="presenca-form reveal">
+
+      <!-- FORM -->
+      <div id="form-container">
+
+        <!-- Campo de nome + botão adicionar -->
+        <div class="form-group">
+          <label class="form-label" for="nome-input">Nome do convidado</label>
+          <div style="display:flex; gap: 0.8rem; align-items: flex-end;">
+            <input class="form-input" type="text" id="nome-input"
+              placeholder="Digite o nome completo"
+              style="flex:1;"
+              onkeydown="if(event.key==='Enter') adicionarNome()" />
+            <button class="btn-outline" onclick="adicionarNome()"
+              style="padding: 0.7rem 1.2rem; font-size:0.6rem; white-space:nowrap; flex-shrink:0;">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+
+        <!-- Lista de nomes adicionados -->
+        <div id="lista-nomes" style="margin-top: 1.5rem; display:none;">
+          <span class="form-label" style="display:block; margin-bottom:0.8rem;">Convidados adicionados</span>
+          <div id="nomes-items"></div>
+        </div>
+
+        <!-- Mensagem opcional -->
+        <div class="form-group" style="margin-top: 2rem;">
+          <label class="form-label" for="mensagem">Mensagem para os noivos (opcional)</label>
+          <textarea class="form-input" id="mensagem" rows="3"
+            placeholder="Uma palavra carinhosa..." style="resize: vertical;"></textarea>
+        </div>
+
+        <!-- Botão enviar -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button class="btn-gold" id="btn-enviar" style="width:100%; font-size:0.7rem; padding:1.3rem;" onclick="enviarPresenca()">
+            ✉️ &nbsp; Confirmar Presença
+          </button>
+          <p id="status-envio" style="margin-top:1rem; font-size:0.75rem; color:var(--text-muted); letter-spacing:0.04em; display:none;"></p>
+        </div>
+      </div>
+
+      <!-- SUCESSO -->
+      <div class="success-msg" id="success-msg">
+        <p>✨ Presença confirmada!</p>
+        <div id="nomes-confirmados" style="margin: 1rem 0; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-mid);"></div>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-muted); font-style:normal;">Nos vemos em 06.09.2026! 🥂</p>
+
+        <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-top:2rem; margin-bottom:1rem;">Pagar Adesão — R$ 80,00 por pessoa</p>
+
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
+          <button class="btn-gold" style="font-size:0.62rem; padding:1rem 1.5rem;"
+            onclick="copiarPixSucesso()">
+            🏦 &nbsp; PIX — Copiar Chave
+          </button>
+          <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+            target="_blank" rel="noopener noreferrer"
+            onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+            class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
+            💳 &nbsp; Crédito — Link
+          </a>
+        </div>
+        <p id="pix-copiado-msg" style="display:none; margin-top:0.8rem; font-size:0.75rem; color:var(--gold-dark);">✓ Chave PIX copiada! Cole no seu banco.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- ── INFORMAÇÕES ── -->
 <section id="info">
@@ -1093,82 +1170,6 @@
   </div>
 </section>
 
-<!-- ── CONFIRMAR PRESENÇA ── -->
-<section id="presenca">
-  <div class="section-inner">
-    <span class="section-label reveal">Sua presença é especial</span>
-    <h2 class="section-title reveal">Confirmar Presença</h2>
-    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
-
-    <div class="presenca-form reveal">
-
-      <!-- FORM -->
-      <div id="form-container">
-
-        <!-- Campo de nome + botão adicionar -->
-        <div class="form-group">
-          <label class="form-label" for="nome-input">Nome do convidado</label>
-          <div style="display:flex; gap: 0.8rem; align-items: flex-end;">
-            <input class="form-input" type="text" id="nome-input"
-              placeholder="Digite o nome completo"
-              style="flex:1;"
-              onkeydown="if(event.key==='Enter') adicionarNome()" />
-            <button class="btn-outline" onclick="adicionarNome()"
-              style="padding: 0.7rem 1.2rem; font-size:0.6rem; white-space:nowrap; flex-shrink:0;">
-              + Adicionar
-            </button>
-          </div>
-        </div>
-
-        <!-- Lista de nomes adicionados -->
-        <div id="lista-nomes" style="margin-top: 1.5rem; display:none;">
-          <span class="form-label" style="display:block; margin-bottom:0.8rem;">Convidados adicionados</span>
-          <div id="nomes-items"></div>
-        </div>
-
-        <!-- Mensagem opcional -->
-        <div class="form-group" style="margin-top: 2rem;">
-          <label class="form-label" for="mensagem">Mensagem para os noivos (opcional)</label>
-          <textarea class="form-input" id="mensagem" rows="3"
-            placeholder="Uma palavra carinhosa..." style="resize: vertical;"></textarea>
-        </div>
-
-        <!-- Botão enviar -->
-        <div style="text-align: center; margin-top: 2.5rem;">
-          <button class="btn-gold" id="btn-enviar" style="width:100%; font-size:0.7rem; padding:1.3rem;" onclick="enviarPresenca()">
-            ✉️ &nbsp; Confirmar Presença
-          </button>
-          <p id="status-envio" style="margin-top:1rem; font-size:0.75rem; color:var(--text-muted); letter-spacing:0.04em; display:none;"></p>
-        </div>
-      </div>
-
-      <!-- SUCESSO -->
-      <div class="success-msg" id="success-msg">
-        <p>✨ Presença confirmada!</p>
-        <div id="nomes-confirmados" style="margin: 1rem 0; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-mid);"></div>
-        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-muted); font-style:normal;">Nos vemos em 06.09.2026! 🥂</p>
-
-        <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-top:2rem; margin-bottom:1rem;">Pagar Adesão — R$ 80,00 por pessoa</p>
-
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
-          <button class="btn-gold" style="font-size:0.62rem; padding:1rem 1.5rem;"
-            onclick="copiarPixSucesso()">
-            🏦 &nbsp; PIX — Copiar Chave
-          </button>
-          <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
-            target="_blank" rel="noopener noreferrer"
-            onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
-            class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
-            💳 &nbsp; Crédito — Link
-          </a>
-        </div>
-        <p id="pix-copiado-msg" style="display:none; margin-top:0.8rem; font-size:0.75rem; color:var(--gold-dark);">✓ Chave PIX copiada! Cole no seu banco.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ── LISTA DE PRESENTES ── -->
 <section id="presentes">
   <div class="section-inner">
@@ -1349,7 +1350,7 @@
   document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
   // ── Nav dots ativos
-  const sections = ['hero','info','programacao','cardapio','presenca','localizacao'];
+  const sections = ['hero','presenca','info','programacao','cardapio','localizacao'];
   const sectionEls = sections.map(id => document.getElementById(id));
   const dots = document.querySelectorAll('.nav-dot');
 
