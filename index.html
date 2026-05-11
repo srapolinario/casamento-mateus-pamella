@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mateus & Pâmella — 06.09.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B8973A;
+      --gold-light: #D4B96A;
+      --gold-pale: #EAD98B;
+      --gold-dark: #7A6020;
+      --cream: #FAF7F0;
+      --cream-dark: #F0EBE0;
+      --text-dark: #2C2418;
+      --text-mid: #5A4E38;
+      --text-muted: #8A7A60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── PARTÍCULAS ── */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--gold-pale) 0%, transparent 70%);
+      opacity: 0;
+      animation: floatUp var(--dur) var(--delay) infinite ease-in-out;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ── SEÇÕES ── */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,151,58,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(184,151,58,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(212,185,106,0.06) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .invite-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .monogram-wrap {
+      display: block;
+      width: min(480px, 88vw);
+      margin: 1rem auto 0;
+      filter: drop-shadow(0 4px 30px rgba(184,151,58,0.22));
+    }
+    .monogram-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .monogram::after { display: none; }
+
+    .couple-names {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 6vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--text-dark);
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.8s forwards;
+    }
+
+    .ampersand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.3em;
+      margin: 0 0.3em;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 3rem auto 2rem;
+      width: min(340px, 80vw);
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light));
+    }
+    .hero-divider::after { background: linear-gradient(270deg, transparent, var(--gold-light)); }
+    .divider-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .date-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      animation: fadeUp 1s 1.5s forwards;
+    }
+    .date-col {
+      padding: 0.8rem 2rem;
+      text-align: center;
+    }
+    .date-col-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.7rem);
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .date-col-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      letter-spacing: 0.1em;
+    }
+    .date-col-center {
+      border-left: 1px solid var(--gold-light);
+      border-right: 1px solid var(--gold-light);
+      padding: 0.8rem 2.5rem;
+    }
+    .date-day-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 14vw, 6rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 0.9;
+      display: block;
+    }
+    .date-year {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.65rem);
+      letter-spacing: 0.5em;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.4rem;
+    }
+
+    .local-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: var(--text-mid);
+      margin-top: 2.5rem;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: fadeUp 1s 1.8s forwards;
+    }
+
+    .scroll-cta {
+      margin-top: 4rem;
+      opacity: 0;
+      animation: fadeUp 1s 2.2s forwards;
+    }
+    .scroll-cta p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .scroll-arrow {
+      width: 24px; height: 24px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg);
+      margin: 0 auto;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ── NAV DOTS ── */
+    .nav-dots {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s;
+      background: transparent;
+    }
+    .nav-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+    @media (max-width: 600px) { .nav-dots { display: none; } }
+
+    /* ── SECTION COMUM ── */
+    .section-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 300;
+      text-align: center;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem auto 3rem;
+      width: min(200px, 50vw);
+    }
+    .gold-divider::before, .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold-light);
+    }
+    .gold-divider-diamond {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── INFORMAÇÕES ── */
+    #info { background: var(--cream-dark); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 520px) { .info-grid { grid-template-columns: 1fr; } }
+
+    .info-card {
+      border: 1px solid rgba(184,151,58,0.3);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      background: rgba(250,247,240,0.8);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .info-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .info-card-corner {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .info-card-corner.tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+    .info-card-corner.tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+    .info-card-corner.bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; }
+    .info-card-corner.br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+    .info-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .info-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .info-card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-dark);
+    }
+    .info-card-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .adesao-box {
+      margin-top: 2rem;
+      border: 1px solid rgba(184,151,58,0.4);
+      background: rgba(184,151,58,0.05);
+      padding: 2.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      width: 100%;
+    }
+    .adesao-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 9vw, 4rem);
+      font-weight: 300;
+      color: var(--gold-dark);
+    }
+    .adesao-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .adesao-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── PROGRAMAÇÃO ── */
+    #programacao { background: var(--cream); }
+
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--gold-light) 10%, var(--gold-light) 90%, transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.2rem 0 1.2rem 1.5rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 1.6rem;
+      width: 9px; height: 9px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateX(50%);
+      box-shadow: 0 0 0 3px rgba(184,151,58,0.2);
+    }
+    .timeline-time {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      font-weight: 300;
+    }
+
+    /* ── CARDÁPIO ── */
+    #cardapio { background: var(--cream-dark); }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 520px) { .food-grid { grid-template-columns: 1fr; } }
+
+    .food-section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .food-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(184,151,58,0.15);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .food-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .food-item:last-child { border-bottom: none; }
+
+    /* ── PRESENÇA ── */
+    #presenca { background: var(--cream); }
+
+    .btn-gold {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 1.1rem 2.8rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 1.1rem 2.8rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .btn-outline:hover {
+      background: rgba(184,151,58,0.08);
+      transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-top: 3rem;
+    }
+
+    .presenca-form {
+      max-width: 440px;
+      margin: 3rem auto 0;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(184,151,58,0.4) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0.7rem 0 !important;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.3s;
+      box-shadow: none !important;
+    }
+    .form-input:focus { border-bottom-color: var(--gold) !important; }
+    .form-select {
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    .success-msg {
+      display: none;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--gold-dark);
+      padding: 2rem;
+    }
+
+    /* ── PAGAMENTO ── */
+    .payment-summary {
+      border: 1px solid rgba(184,151,58,0.35);
+      background: rgba(184,151,58,0.05);
+      padding: 1.8rem 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .payment-summary.hidden { display: none; }
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(184,151,58,0.15);
+    }
+    .payment-row:last-of-type { border-bottom: none; }
+    .payment-row span:last-child { color: var(--text-dark); font-weight: 400; }
+    .payment-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(184,151,58,0.4);
+    }
+    .payment-total-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .payment-total-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold-dark);
+    }
+    .btn-payment {
+      display: inline-block;
+      width: 100%;
+      margin-top: 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--gold-dark);
+      border: 1px solid var(--gold-dark);
+      padding: 1.2rem 2rem;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-payment:hover {
+      background: #5c4718;
+      border-color: #5c4718;
+      transform: translateY(-2px);
+    }
+    .payment-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pessoas-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1rem 0;
+    }
+    .counter-btn {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .counter-btn:hover { background: var(--gold); color: var(--cream); }
+    .counter-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--text-dark);
+      min-width: 2.5rem;
+      text-align: center;
+    }
+    .counter-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    /* ── PRESENTES ── */
+    #presentes { background: var(--cream-dark); }
+
+    .presentes-text {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+    }
+
+    /* ── LOCALIZAÇÃO ── */
+    #localizacao { background: var(--cream); }
+
+    .location-box {
+      border: 1px solid rgba(184,151,58,0.3);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .location-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .location-address {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(2.5rem, 10vw, 4.5rem);
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .footer-date {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .footer-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250,247,240,0.5);
+    }
+
+    /* ── GLITTER CANVAS ── */
+    #glitter-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* monogram como link */
+    a.monogram {
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    a.monogram:hover {
+      text-shadow: 0 0 60px rgba(184,151,58,0.5), 0 2px 40px rgba(184,151,58,0.25);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ORNAMENTOS DECORATIVOS SVG ── */
+    .ornament {
+      display: block;
+      margin: 0 auto 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    .counter-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+    }
+    .counter-btn:hover { background: var(--gold); color: var(--cream); }
+    .counter-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      min-width: 2.5rem;
+      text-align: center;
+      line-height: 1;
+    }
+    .counter-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Partículas decorativas -->
+<div id="particles"></div>
+
+<!-- Navegação por pontos -->
+<nav class="nav-dots" aria-label="Navegação por seções">
+  <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
+  <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
+  <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
+  <div class="nav-dot" data-section="cardapio" title="Cardápio" onclick="scrollToSection('cardapio')"></div>
+  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
+  <div class="nav-dot" data-section="localizacao" title="Local" onclick="scrollToSection('localizacao')"></div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="glitter-canvas"></canvas>
+  <div class="hero-content">
+    <span class="invite-text">Você está convidado para nossa festa de casamento</span>
+
+    <h1 class="couple-names">
+      Mateus <span class="ampersand">&</span> Pâmella
+    </h1>
+
+    <div class="hero-divider">
+      <div class="divider-diamond"></div>
+    </div>
+
+    <div class="date-block">
+      <div class="date-col">
+        <span class="date-col-label">Dia da semana</span>
+        <span class="date-col-value">Domingo</span>
+      </div>
+      <div class="date-col date-col-center">
+        <span class="date-col-label">Setembro</span>
+        <span class="date-day-big">06</span>
+        <span class="date-year">2 · 0 · 2 · 6</span>
+      </div>
+      <div class="date-col">
+        <span class="date-col-label">Horário</span>
+        <span class="date-col-value">12h00</span>
+      </div>
+    </div>
+
+    <p class="local-text">Área Polo Clube · Franca, SP</p>
+
+    <div class="scroll-cta">
+      <p>Clique para saber mais</p>
+      <div class="scroll-arrow" onclick="scrollToSection('info')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INFORMAÇÕES ── -->
+<section id="info">
+  <div class="section-inner">
+    <span class="section-label reveal">Detalhes do Evento</span>
+    <h2 class="section-title reveal">Informações</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon">📅</span>
+        <span class="info-card-title">Data</span>
+        <div class="info-card-value">06 de Setembro</div>
+        <div class="info-card-sub">Domingo · 2026</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon">🕐</span>
+        <span class="info-card-title">Horário</span>
+        <div class="info-card-value">12h00</div>
+        <div class="info-card-sub">Pontualmente</div>
+      </div>
+
+      <div class="info-card reveal" style="grid-column: 1 / -1; cursor:pointer;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank')" title="Abrir no Google Maps / GPS">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon">📍</span>
+        <span class="info-card-title">Local — clique para abrir no GPS</span>
+        <div class="info-card-value">Área Polo Clube</div>
+        <div class="info-card-sub">Av. Manoel Jacinto Netto, 9009 · Franca – SP</div>
+      </div>
+
+    </div><!-- /info-grid -->
+
+    <div class="adesao-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <span class="adesao-label">Contribuição por pessoa</span>
+      <div class="adesao-price">R$ 80,00</div>
+      <p class="adesao-note">Para ainda ficar melhor, traga sua bebida preferida!<br>Cooler liberado 🥂</p>
+
+      <!-- Divisor -->
+      <div style="margin: 2rem auto; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,58,0.4), transparent);"></div>
+
+      <!-- Formas de pagamento -->
+      <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">Como pagar</span>
+
+      <!-- Tabs PIX / Crédito -->
+      <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
+        <button id="tab-pix" onclick="showTab('pix')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:var(--gold); color:var(--cream); cursor:pointer; transition:all 0.2s;">
+          PIX
+        </button>
+        <button id="tab-link" onclick="showTab('link')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; transition:all 0.2s;">
+          Crédito
+        </button>
+      </div>
+
+      <!-- Tab PIX -->
+      <div id="tab-pix-content">
+        <!-- QR Code via API -->
+        <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=fa0b5f63-334f-49b9-ab83-2d0db314b922&bgcolor=ffffff&color=7A6020&margin=2"
+            alt="QR Code PIX"
+            width="144" height="144"
+            style="display:block;" />
+        </div>
+
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-muted); margin-bottom:1rem;">
+          Escaneie o QR Code ou copie a chave abaixo
+        </p>
+
+        <!-- Chave PIX copiável -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+          <code id="pix-key"
+            style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
+            color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
+            padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
+            fa0b5f63-334f-49b9-ab83-2d0db314b922
+          </code>
+          <button onclick="copiarPix()"
+            class="btn-outline"
+            id="btn-copiar"
+            style="font-size:0.55rem; padding:0.6rem 1.2rem; margin:0.5rem 0;">
+            📋 Copiar chave
+          </button>
+        </div>
+        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: Chave aleatória · Banco InfinitePay</p>
+      </div>
+
+      <!-- Tab Link -->
+      <div id="tab-link-content" style="display:none;">
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          Clique no botão para ser redirecionado ao link de pagamento seguro
+        </p>
+        <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+          target="_blank" rel="noopener noreferrer"
+          onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+          class="btn-gold" style="font-size:0.65rem; display:inline-block;">
+          💳 &nbsp; Pagar via Link
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAMAÇÃO ── -->
+<section id="programacao">
+  <div class="section-inner">
+    <span class="section-label reveal">O que vem por aí</span>
+    <h2 class="section-title reveal">Programação</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">12h00</span>
+        <span class="timeline-event">Abertura e cerimônia</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">14h00</span>
+        <span class="timeline-event">Grupo Simplicidade</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">16h30</span>
+        <span class="timeline-event">Sunset com Leo Alves</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">18h00</span>
+        <span class="timeline-event">Banda a definir</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">19h30</span>
+        <span class="timeline-event">Sarau — Liberado!</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">20h00</span>
+        <span class="timeline-event">After com Leo Alves</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">22h00</span>
+        <span class="timeline-event">Encerramento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARDÁPIO ── -->
+<section id="cardapio">
+  <div class="section-inner">
+    <span class="section-label reveal">O melhor do evento</span>
+    <h2 class="section-title reveal">Cardápio</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="food-grid">
+      <div class="reveal">
+        <span class="food-section-title">Open Food</span>
+        <div class="food-item">Churrasco</div>
+        <div class="food-item">Mesa de frios e aperitivos</div>
+        <div class="food-item">Arroz no arado</div>
+        <div class="food-item">Doces e Bolo</div>
+      </div>
+      <div class="reveal">
+        <span class="food-section-title">Bebidas</span>
+        <div class="food-item">Traga sua favorita</div>
+        <div class="food-item">Cooler liberado</div>
+        <div class="food-item">Área de drinks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFIRMAR PRESENÇA ── -->
+<section id="presenca">
+  <div class="section-inner">
+    <span class="section-label reveal">Sua presença é especial</span>
+    <h2 class="section-title reveal">Confirmar Presença</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="presenca-form reveal">
+
+      <!-- FORM -->
+      <div id="form-container">
+
+        <!-- Campo de nome + botão adicionar -->
+        <div class="form-group">
+          <label class="form-label" for="nome-input">Nome do convidado</label>
+          <div style="display:flex; gap: 0.8rem; align-items: flex-end;">
+            <input class="form-input" type="text" id="nome-input"
+              placeholder="Digite o nome completo"
+              style="flex:1;"
+              onkeydown="if(event.key==='Enter') adicionarNome()" />
+            <button class="btn-outline" onclick="adicionarNome()"
+              style="padding: 0.7rem 1.2rem; font-size:0.6rem; white-space:nowrap; flex-shrink:0;">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+
+        <!-- Lista de nomes adicionados -->
+        <div id="lista-nomes" style="margin-top: 1.5rem; display:none;">
+          <span class="form-label" style="display:block; margin-bottom:0.8rem;">Convidados adicionados</span>
+          <div id="nomes-items"></div>
+        </div>
+
+        <!-- Mensagem opcional -->
+        <div class="form-group" style="margin-top: 2rem;">
+          <label class="form-label" for="mensagem">Mensagem para os noivos (opcional)</label>
+          <textarea class="form-input" id="mensagem" rows="3"
+            placeholder="Uma palavra carinhosa..." style="resize: vertical;"></textarea>
+        </div>
+
+        <!-- Botão enviar -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button class="btn-gold" id="btn-enviar" style="width:100%; font-size:0.7rem; padding:1.3rem;" onclick="enviarPresenca()">
+            ✉️ &nbsp; Confirmar Presença
+          </button>
+          <p id="status-envio" style="margin-top:1rem; font-size:0.75rem; color:var(--text-muted); letter-spacing:0.04em; display:none;"></p>
+        </div>
+      </div>
+
+      <!-- SUCESSO -->
+      <div class="success-msg" id="success-msg">
+        <p>✨ Presença confirmada!</p>
+        <div id="nomes-confirmados" style="margin: 1rem 0; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-mid);"></div>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-muted); font-style:normal;">Nos vemos em 06.09.2026! 🥂</p>
+
+        <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-top:2rem; margin-bottom:1rem;">Pagar Adesão — R$ 80,00 por pessoa</p>
+
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
+          <button class="btn-gold" style="font-size:0.62rem; padding:1rem 1.5rem;"
+            onclick="copiarPixSucesso()">
+            🏦 &nbsp; PIX — Copiar Chave
+          </button>
+          <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+            target="_blank" rel="noopener noreferrer"
+            onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+            class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
+            💳 &nbsp; Crédito — Link
+          </a>
+        </div>
+        <p id="pix-copiado-msg" style="display:none; margin-top:0.8rem; font-size:0.75rem; color:var(--gold-dark);">✓ Chave PIX copiada! Cole no seu banco.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LISTA DE PRESENTES ── -->
+<section id="presentes">
+  <div class="section-inner">
+    <span class="section-label reveal">Com carinho</span>
+    <h2 class="section-title reveal">Lista de Presentes</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <p class="presentes-text reveal">
+      Sua presença já é o maior presente que poderíamos receber.<br><br>
+      Mas se quiser nos presentear de alguma forma, ficamos muito gratos por qualquer contribuição para nossa nova vida juntos.
+    </p>
+
+    <div class="cta-buttons reveal">
+      <a href="#" class="btn-outline" onclick="alert('Em breve — lista em construção! 🎁'); return false;">Ver Lista de Presentes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCALIZAÇÃO ── -->
+<section id="localizacao">
+  <div class="section-inner">
+    <span class="section-label reveal">Onde nos encontrar</span>
+    <h2 class="section-title reveal">Como Chegar</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="location-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <div class="location-name">Área Polo Clube · Franca</div>
+      <div class="location-address" style="line-height:1.8;">
+        Av. Manoel Jacinto Netto, 9009<br>
+        <span style="font-size:0.9em;">Franca Polo Club · Franca – SP</span>
+      </div>
+      <a href="https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.6rem; display:inline-flex; align-items:center; gap:0.6rem;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank'); return false;">
+        📍 &nbsp;Abrir no GPS / Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-names">Mateus & Pâmella</span>
+  <span class="footer-date">06 · 09 · 2026</span>
+  <p class="footer-msg">Seremos gratos em ter sua presença!</p>
+</footer>
+
+<script>
+  // ── Glitter canvas no hero
+  (function() {
+    const canvas = document.getElementById('glitter-canvas');
+    const hero = document.getElementById('hero');
+    const ctx = canvas.getContext('2d');
+    let W, H, glitters = [];
+
+    const GOLD_COLORS = [
+      'rgba(234,217,139,',
+      'rgba(212,185,106,',
+      'rgba(184,151,58,',
+      'rgba(250,230,160,',
+      'rgba(200,170,80,',
+    ];
+
+    function resize() {
+      W = canvas.width = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+    }
+
+    function createGlitter() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        size: Math.random() * 2.5 + 0.5,
+        alpha: 0,
+        maxAlpha: Math.random() * 0.85 + 0.15,
+        speed: Math.random() * 0.015 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        color: GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)],
+        shape: Math.random() > 0.6 ? 'star' : 'circle',
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.03,
+        drift: (Math.random() - 0.5) * 0.3,
+        vy: -(Math.random() * 0.4 + 0.1),
+      };
+    }
+
+    function drawStar(ctx, x, y, r, alpha, color, rotation) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++) {
+        const angle = (i / 4) * Math.PI * 2;
+        const outer = r;
+        const inner = r * 0.3;
+        ctx.lineTo(Math.cos(angle) * outer, Math.sin(angle) * outer);
+        ctx.lineTo(Math.cos(angle + Math.PI / 4) * inner, Math.sin(angle + Math.PI / 4) * inner);
+      }
+      ctx.closePath();
+      ctx.fillStyle = color + alpha + ')';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function init() {
+      glitters = [];
+      for (let i = 0; i < 180; i++) {
+        const g = createGlitter();
+        g.phase = Math.random() * Math.PI * 2; // random start phase
+        glitters.push(g);
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      glitters.forEach((g, i) => {
+        // pulse alpha
+        g.phase += g.speed;
+        g.alpha = Math.abs(Math.sin(g.phase)) * g.maxAlpha;
+
+        // slow drift upward
+        g.y += g.vy;
+        g.x += g.drift;
+        g.rotation += g.rotSpeed;
+
+        // reset when off screen
+        if (g.y < -10 || g.x < -10 || g.x > W + 10) {
+          glitters[i] = createGlitter();
+          glitters[i].y = H + 5;
+        }
+
+        if (g.shape === 'star') {
+          drawStar(ctx, g.x, g.y, g.size * 1.8, g.alpha, g.color, g.rotation);
+        } else {
+          ctx.beginPath();
+          ctx.arc(g.x, g.y, g.size, 0, Math.PI * 2);
+          ctx.fillStyle = g.color + g.alpha + ')';
+          ctx.fill();
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    init();
+    animate();
+    window.addEventListener('resize', () => { resize(); init(); });
+  })();
+
+  // ── Partículas flutuantes (fundo global)
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${Math.random() * 100}%;
+      --dur: ${Math.random() * 12 + 10}s;
+      --delay: ${Math.random() * 10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  // ── Nav dots ativos
+  const sections = ['hero','info','programacao','cardapio','presenca','localizacao'];
+  const sectionEls = sections.map(id => document.getElementById(id));
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const dotObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        dots.forEach(d => d.classList.remove('active'));
+        const idx = sections.indexOf(e.target.id);
+        if (idx >= 0) dots[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sectionEls.forEach(el => el && dotObserver.observe(el));
+
+  // ── Scroll to section
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── PIX tabs e copiar chave
+  function copiarPixSucesso() {
+    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    navigator.clipboard.writeText(chave).then(() => {
+      document.getElementById('pix-copiado-msg').style.display = 'block';
+    }).catch(() => {
+      prompt('Copie a chave PIX:', chave);
+    });
+  }
+
+  function showTab(tab) {
+    const isPix = tab === 'pix';
+    document.getElementById('tab-pix-content').style.display = isPix ? 'block' : 'none';
+    document.getElementById('tab-link-content').style.display = isPix ? 'none' : 'block';
+    document.getElementById('tab-pix').style.background = isPix ? 'var(--gold)' : 'transparent';
+    document.getElementById('tab-pix').style.color = isPix ? 'var(--cream)' : 'var(--gold)';
+    document.getElementById('tab-link').style.background = isPix ? 'transparent' : 'var(--gold)';
+    document.getElementById('tab-link').style.color = isPix ? 'var(--gold)' : 'var(--cream)';
+  }
+
+  function copiarPix() {
+    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    navigator.clipboard.writeText(chave).then(() => {
+      const btn = document.getElementById('btn-copiar');
+      btn.textContent = '✓ Copiado!';
+      btn.style.borderColor = 'var(--gold-dark)';
+      btn.style.color = 'var(--gold-dark)';
+      setTimeout(() => {
+        btn.textContent = '📋 Copiar chave';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2500);
+    });
+  }
+
+  // ── Google Sheets + Lista de nomes
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxLcYPjAqX1ml19GTkZOwFCc5ZP8AEM_dhnCuuo5Ty4TxaazzjIjvHxzqEMMKyuH7NqUw/exec';
+  let listaNomes = [];
+
+  function adicionarNome() {
+    const input = document.getElementById('nome-input');
+    const nome = input.value.trim();
+    if (!nome) { input.focus(); return; }
+    if (listaNomes.includes(nome)) {
+      input.value = '';
+      input.focus();
+      return;
+    }
+    listaNomes.push(nome);
+    input.value = '';
+    input.focus();
+    renderizarNomes();
+  }
+
+  function removerNome(idx) {
+    listaNomes.splice(idx, 1);
+    renderizarNomes();
+  }
+
+  function renderizarNomes() {
+    const container = document.getElementById('nomes-items');
+    const lista = document.getElementById('lista-nomes');
+    if (listaNomes.length === 0) {
+      lista.style.display = 'none';
+      return;
+    }
+    lista.style.display = 'block';
+    container.innerHTML = listaNomes.map((nome, i) => `
+      <div style="display:flex; justify-content:space-between; align-items:center;
+        padding: 0.7rem 0; border-bottom: 1px solid rgba(184,151,58,0.15);">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:var(--text-dark);">
+          ${i + 1}. ${nome}
+        </span>
+        <button onclick="removerNome(${i})"
+          style="background:none; border:none; cursor:pointer; color:var(--text-muted);
+          font-size:1rem; padding:0.2rem 0.5rem; line-height:1;"
+          title="Remover">✕</button>
+      </div>
+    `).join('');
+  }
+
+  async function enviarPresenca() {
+    if (listaNomes.length === 0) {
+      alert('Adicione pelo menos um nome antes de confirmar.');
+      return;
+    }
+    const mensagem = document.getElementById('mensagem').value.trim();
+    const btn = document.getElementById('btn-enviar');
+    const status = document.getElementById('status-envio');
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    status.style.display = 'block';
+    status.style.color = 'var(--text-muted)';
+    status.textContent = 'Registrando sua presença...';
+
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nomes: listaNomes, mensagem: mensagem })
+      });
+
+      // Sucesso
+      const nomesHtml = listaNomes.map(n => `<div style="padding:0.2rem 0;">✓ ${n}</div>`).join('');
+      document.getElementById('nomes-confirmados').innerHTML = nomesHtml;
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = '✉️  Confirmar Presença';
+      status.style.color = '#c0392b';
+      status.textContent = 'Erro ao enviar. Tente novamente.';
+    }
+  }
+</script>
+</body>
+</html>
