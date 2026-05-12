@@ -1046,7 +1046,7 @@
   <div class="hero-bg"></div>
   <canvas id="glitter-canvas"></canvas>
   <div class="hero-content">
-    <span class="invite-text">Você está convidado para nossa festa de casamento</span>
+    <span class="invite-text">Você está convidado para nossa festa de união</span>
 
     <h1 class="couple-names">
       Mateus <span class="ampersand">&</span> Pâmella
@@ -1095,7 +1095,7 @@
     </div>
 
 
-    <p class="local-text">Área Polo Clube · Franca, SP</p>
+    <p class="local-text">Recanto Taveira, Chácara 14</p>
 
     <div class="scroll-cta">
       <p>Clique para saber mais</p>
@@ -1242,8 +1242,8 @@
           </svg>
         </span>
         <span class="info-card-title">Local — clique para abrir no GPS</span>
-        <div class="info-card-value">Área Polo Clube</div>
-        <div class="info-card-sub">Av. Manoel Jacinto Netto, 9009 · Franca – SP</div>
+        <div class="info-card-value">Recanto Taveira</div>
+        <div class="info-card-sub">Chácara 14 · Franca – SP</div>
       </div>
 
     </div><!-- /info-grid -->
@@ -1476,10 +1476,10 @@
       <div class="info-card-corner tr"></div>
       <div class="info-card-corner bl"></div>
       <div class="info-card-corner br"></div>
-      <div class="location-name">Área Polo Clube · Franca</div>
+      <div class="location-name">Recanto Taveira · Franca</div>
       <div class="location-address" style="line-height:1.8;">
-        Av. Manoel Jacinto Netto, 9009<br>
-        <span style="font-size:0.9em;">Franca Polo Club · Franca – SP</span>
+        Chácara 14<br>
+        <span style="font-size:0.9em;">Chácara 14 · Franca – SP</span>
       </div>
       <a href="https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.6rem; display:inline-flex; align-items:center; gap:0.6rem;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank'); return false;">
         📍 &nbsp;Abrir no GPS / Google Maps
@@ -1696,7 +1696,7 @@
 
   function abrirAppleCalendar() {
     // Gera .ics e faz download — iOS abre no Apple Calendar
-    const ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:20260906T120000\r\nDTEND:20260906T220000\r\nSUMMARY:Casamento Mateus & Pamella\r\nDESCRIPTION:Festa de casamento. Adesao R$ 80 por pessoa.\r\nLOCATION:Av. Manoel Jacinto Netto 9009 Franca SP\r\nEND:VEVENT\r\nEND:VCALENDAR';
+    const ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:20260906T120000\r\nDTEND:20260906T220000\r\nSUMMARY:União Mateus & Pamella\r\nDESCRIPTION:Festa de união. Adesao R$ 80 por pessoa.\r\nLOCATION:Recanto Taveira Chacara 14 Franca SP\r\nEND:VEVENT\r\nEND:VCALENDAR';
     const blob = new Blob([ics], {type: 'text/calendar'});
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -1707,10 +1707,10 @@
 
   function abrirGoogleCalendar() {
     const url = 'https://www.google.com/calendar/render?action=TEMPLATE'
-      + '&text=Casamento+Mateus+%26+P%C3%A2mella'
+      + '&text=Uni%C3%A3o+Mateus+%26+P%C3%A2mella'
       + '&dates=20260906T120000/20260906T220000'
-      + '&details=Festa+de+casamento+de+Mateus+%26+P%C3%A2mella.+Ades%C3%A3o%3A+R%24+80+por+pessoa.+Cooler+liberado!'
-      + '&location=Av.+Manoel+Jacinto+Netto+9009+Franca+SP'
+      + '&details=Festa+de+uni%C3%A3o+de+Mateus+%26+P%C3%A2mella.+Ades%C3%A3o%3A+R%24+80+por+pessoa.+Cooler+liberado!'
+      + '&location=Recanto+Taveira+Chacara+14+Franca+SP'
       + '&sf=true&output=xml';
     window.open(url, '_blank');
     fecharModal();
