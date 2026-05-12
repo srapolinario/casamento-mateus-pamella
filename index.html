@@ -797,14 +797,16 @@
 
 
     .gift-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
       gap: 1.5rem;
       margin-top: 2.5rem;
     }
-    @media (max-width: 640px) { .gift-options { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .gift-options { flex-direction: column; align-items: center; } }
 
     .gift-card {
+      width: min(100%, 360px);
       border: 1px solid rgba(122,96,32,0.42);
       background: rgba(250,247,240,0.88);
       padding: 2rem 1.5rem;
@@ -1034,10 +1036,11 @@
 <!-- Navegação por pontos -->
 <nav class="nav-dots" aria-label="Navegação por seções">
   <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
-  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
   <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
+  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
   <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
   <div class="nav-dot" data-section="cardapio" title="Cardápio" onclick="scrollToSection('cardapio')"></div>
+  <div class="nav-dot" data-section="presentes" title="Presentes" onclick="scrollToSection('presentes')"></div>
   <div class="nav-dot" data-section="localizacao" title="Local" onclick="scrollToSection('localizacao')"></div>
 </nav>
 
@@ -1046,7 +1049,7 @@
   <div class="hero-bg"></div>
   <canvas id="glitter-canvas"></canvas>
   <div class="hero-content">
-    <span class="invite-text">Você está convidado para nossa festa de união</span>
+    <span class="invite-text">Você está convidado para celebrar nossa união</span>
 
     <h1 class="couple-names">
       Mateus <span class="ampersand">&</span> Pâmella
@@ -1099,7 +1102,157 @@
 
     <div class="scroll-cta">
       <p>Clique para saber mais</p>
-      <div class="scroll-arrow" onclick="scrollToSection('presenca')"></div>
+      <div class="scroll-arrow" onclick="scrollToSection('info')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INFORMAÇÕES ── -->
+<section id="info">
+  <div class="section-inner">
+    <span class="section-label reveal">Detalhes do Evento</span>
+    <h2 class="section-title reveal">Informações</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="info-grid">
+      <div class="info-card reveal" style="cursor:pointer;" onclick="adicionarAgenda()" title="Adicionar à agenda">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <rect class="icon-fill-soft" x="10" y="12" width="28" height="26" rx="2.5"></rect>
+            <path class="icon-accent" d="M10 19h28"></path>
+            <path d="M17 9v6M31 9v6"></path>
+            <circle class="icon-dot" cx="18" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="24" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="30" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="18" cy="32" r="1.5"></circle>
+            <circle class="icon-dot" cx="24" cy="32" r="1.5"></circle>
+          </svg>
+        </span>
+        <span class="info-card-title">Data — clique para salvar na agenda</span>
+        <div class="info-card-value">06 de Setembro</div>
+        <div class="info-card-sub">Domingo · 2026</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <circle class="icon-fill-soft" cx="24" cy="24" r="15"></circle>
+            <path d="M24 15v10l7 4"></path>
+            <path class="icon-accent" d="M16 8l-3 3M32 8l3 3"></path>
+            <circle class="icon-dot" cx="24" cy="24" r="1.6"></circle>
+          </svg>
+        </span>
+        <span class="info-card-title">Horário</span>
+        <div class="info-card-value">12h00</div>
+        <div class="info-card-sub">Pontualmente</div>
+      </div>
+
+      <div class="info-card reveal" style="grid-column: 1 / -1; cursor:pointer;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank')" title="Abrir no Google Maps / GPS">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path class="icon-fill-soft" d="M24 42s12-11.3 12-22A12 12 0 0 0 12 20c0 10.7 12 22 12 22Z"></path>
+            <circle cx="24" cy="20" r="4.5"></circle>
+            <path class="icon-accent" d="M16 41h16"></path>
+          </svg>
+        </span>
+        <span class="info-card-title">Local — clique para abrir no GPS</span>
+        <div class="info-card-value">Recanto Taveira</div>
+        <div class="info-card-sub">Chácara 14 · Franca – SP</div>
+      </div>
+
+    </div><!-- /info-grid -->
+
+    <div class="adesao-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <span class="adesao-label">Contribuição por pessoa</span>
+      <div class="adesao-price">R$ 80,00</div>
+      <p class="adesao-note">Para ficar ainda melhor, traga sua bebida preferida!<br>Cooler liberado 🥂</p>
+
+      <!-- Divisor -->
+      <div style="margin: 2rem auto; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,58,0.4), transparent);"></div>
+
+      <!-- Formas de pagamento -->
+      <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">Como pagar</span>
+
+      <!-- Tabs PIX / Crédito -->
+      <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
+        <button id="tab-pix" onclick="showTab('pix')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:var(--gold); color:var(--cream); cursor:pointer; transition:all 0.2s;">
+          PIX
+        </button>
+        <button id="tab-link" onclick="showTab('link')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; transition:all 0.2s;">
+          Crédito
+        </button>
+      </div>
+
+      <!-- Tab PIX -->
+      <div id="tab-pix-content">
+        <!-- QR Code via API -->
+        <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=fa0b5f63-334f-49b9-ab83-2d0db314b922&bgcolor=ffffff&color=7A6020&margin=2"
+            alt="QR Code PIX"
+            width="144" height="144"
+            style="display:block;" />
+        </div>
+
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-muted); margin-bottom:1rem;">
+          Escaneie o QR Code ou copie a chave abaixo
+        </p>
+
+        <!-- Chave PIX copiável -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+          <code id="pix-key"
+            style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
+            color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
+            padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
+            fa0b5f63-334f-49b9-ab83-2d0db314b922
+          </code>
+          <button onclick="copiarPix()"
+            class="btn-outline"
+            id="btn-copiar"
+            style="font-size:0.55rem; padding:0.6rem 1.2rem; margin:0.5rem 0;">
+            📋 Copiar chave
+          </button>
+        </div>
+        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: Chave aleatória · Banco Nubank</p>
+      </div>
+
+      <!-- Tab Link -->
+      <div id="tab-link-content" style="display:none;">
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          Clique no botão para ser redirecionado ao link de pagamento seguro
+        </p>
+        <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+          target="_blank" rel="noopener noreferrer"
+          onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+          class="btn-gold" style="font-size:0.65rem; display:inline-block;">
+          💳 &nbsp; Pagar via Link
+        </a>
+      </div>
+
+    </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('presenca')">Ver mais</button>
     </div>
   </div>
 </section>
@@ -1177,155 +1330,13 @@
       </div>
 
     </div>
-  </div>
-</section>
 
-
-<!-- ── INFORMAÇÕES ── -->
-<section id="info">
-  <div class="section-inner">
-    <span class="section-label reveal">Detalhes do Evento</span>
-    <h2 class="section-title reveal">Informações</h2>
-    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
-
-    <div class="info-grid">
-      <div class="info-card reveal" style="cursor:pointer;" onclick="adicionarAgenda()" title="Adicionar à agenda">
-        <div class="info-card-corner tl"></div>
-        <div class="info-card-corner tr"></div>
-        <div class="info-card-corner bl"></div>
-        <div class="info-card-corner br"></div>
-        <span class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" role="img">
-            <rect class="icon-fill-soft" x="10" y="12" width="28" height="26" rx="2.5"></rect>
-            <path class="icon-accent" d="M10 19h28"></path>
-            <path d="M17 9v6M31 9v6"></path>
-            <circle class="icon-dot" cx="18" cy="26" r="1.5"></circle>
-            <circle class="icon-dot" cx="24" cy="26" r="1.5"></circle>
-            <circle class="icon-dot" cx="30" cy="26" r="1.5"></circle>
-            <circle class="icon-dot" cx="18" cy="32" r="1.5"></circle>
-            <circle class="icon-dot" cx="24" cy="32" r="1.5"></circle>
-          </svg>
-        </span>
-        <span class="info-card-title">Data — clique para salvar na agenda</span>
-        <div class="info-card-value">06 de Setembro</div>
-        <div class="info-card-sub">Domingo · 2026</div>
-      </div>
-
-      <div class="info-card reveal">
-        <div class="info-card-corner tl"></div>
-        <div class="info-card-corner tr"></div>
-        <div class="info-card-corner bl"></div>
-        <div class="info-card-corner br"></div>
-        <span class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" role="img">
-            <circle class="icon-fill-soft" cx="24" cy="24" r="15"></circle>
-            <path d="M24 15v10l7 4"></path>
-            <path class="icon-accent" d="M16 8l-3 3M32 8l3 3"></path>
-            <circle class="icon-dot" cx="24" cy="24" r="1.6"></circle>
-          </svg>
-        </span>
-        <span class="info-card-title">Horário</span>
-        <div class="info-card-value">12h00</div>
-        <div class="info-card-sub">Pontualmente</div>
-      </div>
-
-      <div class="info-card reveal" style="grid-column: 1 / -1; cursor:pointer;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank')" title="Abrir no Google Maps / GPS">
-        <div class="info-card-corner tl"></div>
-        <div class="info-card-corner tr"></div>
-        <div class="info-card-corner bl"></div>
-        <div class="info-card-corner br"></div>
-        <span class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" role="img">
-            <path class="icon-fill-soft" d="M24 42s12-11.3 12-22A12 12 0 0 0 12 20c0 10.7 12 22 12 22Z"></path>
-            <circle cx="24" cy="20" r="4.5"></circle>
-            <path class="icon-accent" d="M16 41h16"></path>
-          </svg>
-        </span>
-        <span class="info-card-title">Local — clique para abrir no GPS</span>
-        <div class="info-card-value">Recanto Taveira</div>
-        <div class="info-card-sub">Chácara 14 · Franca – SP</div>
-      </div>
-
-    </div><!-- /info-grid -->
-
-    <div class="adesao-box reveal">
-      <div class="info-card-corner tl"></div>
-      <div class="info-card-corner tr"></div>
-      <div class="info-card-corner bl"></div>
-      <div class="info-card-corner br"></div>
-      <span class="adesao-label">Contribuição por pessoa</span>
-      <div class="adesao-price">R$ 80,00</div>
-      <p class="adesao-note">Para ainda ficar melhor, traga sua bebida preferida!<br>Cooler liberado 🥂</p>
-
-      <!-- Divisor -->
-      <div style="margin: 2rem auto; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,58,0.4), transparent);"></div>
-
-      <!-- Formas de pagamento -->
-      <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">Como pagar</span>
-
-      <!-- Tabs PIX / Crédito -->
-      <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
-        <button id="tab-pix" onclick="showTab('pix')"
-          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
-          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:var(--gold); color:var(--cream); cursor:pointer; transition:all 0.2s;">
-          PIX
-        </button>
-        <button id="tab-link" onclick="showTab('link')"
-          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
-          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; transition:all 0.2s;">
-          Crédito
-        </button>
-      </div>
-
-      <!-- Tab PIX -->
-      <div id="tab-pix-content">
-        <!-- QR Code via API -->
-        <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=fa0b5f63-334f-49b9-ab83-2d0db314b922&bgcolor=ffffff&color=7A6020&margin=2"
-            alt="QR Code PIX"
-            width="144" height="144"
-            style="display:block;" />
-        </div>
-
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-muted); margin-bottom:1rem;">
-          Escaneie o QR Code ou copie a chave abaixo
-        </p>
-
-        <!-- Chave PIX copiável -->
-        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
-          <code id="pix-key"
-            style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
-            color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
-            padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
-            fa0b5f63-334f-49b9-ab83-2d0db314b922
-          </code>
-          <button onclick="copiarPix()"
-            class="btn-outline"
-            id="btn-copiar"
-            style="font-size:0.55rem; padding:0.6rem 1.2rem; margin:0.5rem 0;">
-            📋 Copiar chave
-          </button>
-        </div>
-        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: Chave aleatória · Banco Nubank</p>
-      </div>
-
-      <!-- Tab Link -->
-      <div id="tab-link-content" style="display:none;">
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
-          Clique no botão para ser redirecionado ao link de pagamento seguro
-        </p>
-        <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
-          target="_blank" rel="noopener noreferrer"
-          onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
-          class="btn-gold" style="font-size:0.65rem; display:inline-block;">
-          💳 &nbsp; Pagar via Link
-        </a>
-      </div>
-
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('programacao')">Ver mais</button>
     </div>
   </div>
 </section>
+
 
 <!-- ── PROGRAMAÇÃO ── -->
 <section id="programacao">
@@ -1371,6 +1382,10 @@
         <span class="timeline-event">Encerramento</span>
       </div>
     </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('cardapio')">Ver mais</button>
+    </div>
   </div>
 </section>
 
@@ -1396,6 +1411,10 @@
         <div class="food-item">Área de drinks</div>
       </div>
     </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('presentes')">Ver mais</button>
+    </div>
   </div>
 </section>
 
@@ -1419,40 +1438,15 @@
         <div class="info-card-corner br"></div>
         <span class="gift-icon" aria-hidden="true">
           <svg viewBox="0 0 64 64" role="img">
-            <path class="svg-fill-soft" d="M15 29.5 32 15l17 14.5v21.8a2.7 2.7 0 0 1-2.7 2.7H17.7a2.7 2.7 0 0 1-2.7-2.7Z"/>
-            <path d="M22.5 54V35.8h19V54"/>
-            <path class="svg-accent" d="M10 31.5 32 12l22 19.5"/>
-            <path d="M26 43h12"/>
-            <path class="svg-accent" d="M47 17v8.5"/>
-            <path d="M20 23.3V17h7"/>
+            <path class="svg-fill-soft" d="M14 30 L32 15 L50 30 V52 H20 V34 H44 V52" fill="none" stroke-width="2" stroke-linejoin="round"/>
+            <path class="svg-accent" d="M10 32 L32 13 L54 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="svg-accent" d="M24 52 V36 H40 V52" fill="none" stroke-width="2" stroke-linejoin="round"/>
+            <path class="svg-accent" d="M28 42 H36" fill="none" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
-        <span class="gift-title">Casa nova</span>
+        <span class="gift-title">Casa Nova</span>
         <div class="gift-actions">
-          <button class="btn-outline" onclick="copiarPixPresente('Casa nova')">PIX</button>
-          <a href="https://link.infinitepay.io/mateusapolinario" target="_blank" rel="noopener noreferrer" class="btn-gold">Cartão</a>
-        </div>
-      </div>
-
-      <div class="gift-card">
-        <div class="info-card-corner tl"></div>
-        <div class="info-card-corner tr"></div>
-        <div class="info-card-corner bl"></div>
-        <div class="info-card-corner br"></div>
-        <span class="gift-icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64" role="img">
-            <path class="svg-fill-soft" d="M44.2 12.8c-1.5 11.6-11.1 21.1-22.7 22.4 5.7 4.5 13.4 5.8 20.4 3.2 7.7-2.8 13-9.9 13.4-18.1-2.7-1-6.1-3.7-11.1-7.5Z"/>
-            <path class="svg-accent" d="M17 46.5c8.5 4.6 19.6 3.4 27.1-4.1"/>
-            <path d="M18.4 19.8 44.6 46"/>
-            <path d="m40.2 21.2 7.2-7.2c1.6-1.6 4.1-1.6 5.7 0s1.6 4.1 0 5.7l-7.2 7.2"/>
-            <path class="svg-accent" d="m15 17 7.5 2.2 4.1 4.1-7.2 2.1"/>
-            <path class="svg-accent" d="m38.6 42.4 2.1-7.2 4.1 4.1L47 46.8"/>
-            <path d="M14 52h36"/>
-          </svg>
-        </span>
-        <span class="gift-title">Ajudar na lua de mel</span>
-        <div class="gift-actions">
-          <button class="btn-outline" onclick="copiarPixPresente('Lua de mel')">PIX</button>
+          <button class="btn-outline" type="button" onclick="copiarPixPresente('Casa Nova')">PIX</button>
           <a href="https://link.infinitepay.io/mateusapolinario" target="_blank" rel="noopener noreferrer" class="btn-gold">Cartão</a>
         </div>
       </div>
@@ -1663,7 +1657,7 @@
   document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
   // ── Nav dots ativos
-  const sections = ['hero','presenca','info','programacao','cardapio','localizacao'];
+  const sections = ['hero','info','presenca','programacao','cardapio','presentes','localizacao'];
   const sectionEls = sections.map(id => document.getElementById(id));
   const dots = document.querySelectorAll('.nav-dot');
 
