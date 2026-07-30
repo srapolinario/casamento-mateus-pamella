@@ -225,6 +225,7 @@
     }
     .hero-payment-button {
       display: inline-block;
+      width: min(440px, 90vw);
       border: 0;
       border-radius: 999px;
       background: var(--gold);
@@ -238,6 +239,10 @@
       cursor: pointer;
       box-shadow: 0 8px 22px rgba(122,96,32,0.18);
       transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-payment-button + .hero-payment-button {
+      display: block;
+      margin: 0.8rem auto 0;
     }
     .hero-payment-button:hover {
       background: var(--gold-dark);
@@ -1220,6 +1225,9 @@
       <span class="hero-payment-label">Contribuição por pessoa</span>
       <button class="hero-payment-button" type="button" onclick="scrollToSection('contribuicao')">
         Pagamento contribuição · R$ 80,00
+      </button>
+      <button class="hero-payment-button" type="button" onclick="scrollToSection('presentes')">
+        Lista de Presentes
       </button>
     </div>
   </div>
