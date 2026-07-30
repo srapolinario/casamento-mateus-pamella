@@ -208,6 +208,42 @@
       }
     }
 
+    .hero-payment {
+      margin: 2.5rem auto 0;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s 1.7s forwards;
+    }
+    .hero-payment-label {
+      display: block;
+      margin-bottom: 0.9rem;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.68rem);
+      letter-spacing: 0.36em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+    }
+    .hero-payment-button {
+      display: inline-block;
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--cream);
+      padding: 1rem 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(122,96,32,0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-payment-button:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
 
     /* ── CONTAGEM REGRESSIVA ── */
     .countdown-wrap {
@@ -853,6 +889,10 @@
     }
 
     /* ── PRESENTES ── */
+    #contribuicao { background: var(--cream-dark); }
+    #contribuicao .section-inner { max-width: 760px; }
+    #contribuicao .adesao-box { margin-top: 0; }
+
     #presentes { background: var(--cream-dark); }
 
     .presentes-text {
@@ -870,21 +910,49 @@
 
     .gift-options {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: stretch;
-      gap: 1.5rem;
+      gap: 1rem;
       margin-top: 2.5rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    @media (max-width: 640px) { .gift-options { flex-direction: column; align-items: center; } }
 
     .gift-card {
-      width: min(100%, 360px);
-      border: 1px solid rgba(122,96,32,0.42);
-      background: rgba(250,247,240,0.88);
-      padding: 2rem 1.5rem;
+      min-width: 178px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--text-dark);
+      padding: 1rem 1.5rem;
       text-align: center;
       position: relative;
-      box-shadow: 0 10px 30px rgba(44,36,24,0.05);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+      font-weight: 500;
+      line-height: 1;
+      box-shadow: 0 8px 20px rgba(122,96,32,0.12);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+    .gift-card:hover {
+      transform: translateY(-4px);
+      background: var(--gold-dark);
+      color: var(--cream);
+      box-shadow: 0 12px 26px rgba(44,36,24,0.18);
+    }
+    .gift-card:focus-visible {
+      outline: 3px solid rgba(184,151,58,0.35);
+      outline-offset: 4px;
+    }
+    @media (max-width: 540px) {
+      .gift-options { gap: 0.75rem; }
+      .gift-card {
+        min-width: calc(50% - 0.5rem);
+        padding: 0.9rem 0.8rem;
+        font-size: 1rem;
+      }
     }
     .gift-icon {
       width: 54px;
@@ -1108,11 +1176,12 @@
 <!-- Navegação por pontos -->
 <nav class="nav-dots" aria-label="Navegação por seções">
   <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
-  <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
+  <div class="nav-dot" data-section="contribuicao" title="Contribuição" onclick="scrollToSection('contribuicao')"></div>
   <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
+  <div class="nav-dot" data-section="presentes" title="Presentes" onclick="scrollToSection('presentes')"></div>
+  <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
   <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
   <div class="nav-dot" data-section="cardapio" title="Cardápio" onclick="scrollToSection('cardapio')"></div>
-  <div class="nav-dot" data-section="presentes" title="Presentes" onclick="scrollToSection('presentes')"></div>
   <div class="nav-dot" data-section="localizacao" title="Local" onclick="scrollToSection('localizacao')"></div>
 </nav>
 
@@ -1147,34 +1216,11 @@
       </div>
     </div>
 
-    <div class="countdown-wrap" aria-label="Contagem regressiva para o casamento">
-      <span class="countdown-label">Faltam</span>
-      <div class="countdown-grid">
-        <div class="countdown-item">
-          <span class="countdown-number" id="countdown-days">--</span>
-          <span class="countdown-text">Dias</span>
-        </div>
-        <div class="countdown-item">
-          <span class="countdown-number" id="countdown-hours">--</span>
-          <span class="countdown-text">Horas</span>
-        </div>
-        <div class="countdown-item">
-          <span class="countdown-number" id="countdown-minutes">--</span>
-          <span class="countdown-text">Min</span>
-        </div>
-        <div class="countdown-item">
-          <span class="countdown-number" id="countdown-seconds">--</span>
-          <span class="countdown-text">Seg</span>
-        </div>
-      </div>
-    </div>
-
-
-    <p class="local-text">Recanto Taveira, Chácara 14</p>
-
-    <div class="scroll-cta">
-      <p>Clique para saber mais</p>
-      <div class="scroll-arrow" onclick="scrollToSection('info')"></div>
+    <div class="hero-payment">
+      <span class="hero-payment-label">Contribuição por pessoa</span>
+      <button class="hero-payment-button" type="button" onclick="scrollToSection('contribuicao')">
+        Pagamento contribuição · R$ 80,00
+      </button>
     </div>
   </div>
 </section>
@@ -1336,9 +1382,9 @@
         <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
           Clique no botão para ser redirecionado ao link de pagamento seguro
         </p>
-        <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+        <a href="https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL"
           target="_blank" rel="noopener noreferrer"
-          onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+          onclick="window.open('https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL','_blank'); return false;"
           class="btn-gold" style="font-size:0.65rem; display:inline-block;">
           💳 &nbsp; Pagar via Link
         </a>
@@ -1414,9 +1460,9 @@
             onclick="copiarPixSucesso()">
             🏦 &nbsp; PIX — Copiar Chave
           </button>
-          <a href="https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00"
+          <a href="https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL"
             target="_blank" rel="noopener noreferrer"
-            onclick="window.open('https://link.infinitepay.io/mateusapolinario/VC1D-AVMzjDvGp2-80,00','_blank'); return false;"
+            onclick="window.open('https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL','_blank'); return false;"
             class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
             💳 &nbsp; Crédito — Link
           </a>
@@ -1530,30 +1576,13 @@
     </p>
 
     <div class="gift-options reveal">
-      <div class="gift-card">
-        <div class="info-card-corner tl"></div>
-        <div class="info-card-corner tr"></div>
-        <div class="info-card-corner bl"></div>
-        <div class="info-card-corner br"></div>
-        <span class="gift-icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64" role="img">
-            <path class="svg-fill-soft" d="M14 30 L32 15 L50 30 V52 H20 V34 H44 V52" fill="none" stroke-width="2" stroke-linejoin="round"/>
-            <path class="svg-accent" d="M10 32 L32 13 L54 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="svg-accent" d="M24 52 V36 H40 V52" fill="none" stroke-width="2" stroke-linejoin="round"/>
-            <path class="svg-accent" d="M28 42 H36" fill="none" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="gift-title">Casa Nova</span>
-        <div class="gift-actions">
-          <button class="btn-outline" type="button" onclick="copiarPixPresente('Casa Nova')">PIX</button>
-          <a href="https://link.infinitepay.io/mateusapolinario" target="_blank" rel="noopener noreferrer" class="btn-gold">Cartão</a>
-        </div>
-      </div>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/h2PrBXrnPB" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 50 reais">R$50,00</a>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 80 reais">R$80,00</a>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/2JaZKDXIjB" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 100 reais">R$100,00</a>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/0JrC5O5EcB" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 150 reais">R$150,00</a>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/Wxk8Bq4FNL" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 200 reais">R$200,00</a>
+      <a class="gift-card" href="https://invoice.infinitepay.io/mateusapolinario/cXkpp7lYIE" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 500 reais">R$500,00</a>
     </div>
-
-    <p id="pix-presente-msg" style="display:none; text-align:center; margin-top:1rem; font-size:0.78rem; color:var(--gold-dark);">
-      ✓ Chave PIX copiada! Cole no seu banco e informe o valor desejado.
-    </p>
   </div>
 </section>
 
@@ -1589,6 +1618,28 @@
 </footer>
 
 <script>
+  // Ordem principal: datas, contribuição, confirmação e lista de presentes.
+  const heroSection = document.getElementById('hero');
+  const infoSection = document.getElementById('info');
+  const presencaSection = document.getElementById('presenca');
+  const presentesSection = document.getElementById('presentes');
+  const adesaoBox = document.querySelector('.adesao-box');
+
+  if (heroSection && infoSection && presencaSection && presentesSection && adesaoBox) {
+    const contribuicaoSection = document.createElement('section');
+    contribuicaoSection.id = 'contribuicao';
+    contribuicaoSection.innerHTML = `
+      <div class="section-inner">
+        <span class="section-label reveal">Celebre conosco</span>
+        <h2 class="section-title reveal">Contribuição</h2>
+        <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+      </div>`;
+    heroSection.insertAdjacentElement('afterend', contribuicaoSection);
+    contribuicaoSection.querySelector('.section-inner').appendChild(adesaoBox);
+    contribuicaoSection.insertAdjacentElement('afterend', presencaSection);
+    presencaSection.insertAdjacentElement('afterend', presentesSection);
+  }
+
 
 
   // ── Contagem regressiva até 06/09/2026 às 12h
@@ -1756,7 +1807,7 @@
   document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
   // ── Nav dots ativos
-  const sections = ['hero','info','presenca','programacao','cardapio','presentes','localizacao'];
+  const sections = ['hero','contribuicao','presenca','presentes','info','programacao','cardapio','localizacao'];
   const sectionEls = sections.map(id => document.getElementById(id));
   const dots = document.querySelectorAll('.nav-dot');
 
