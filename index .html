@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mateus & Pâmella — 06.09.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B8973A;
+      --gold-light: #D4B96A;
+      --gold-pale: #EAD98B;
+      --gold-dark: #7A6020;
+      --cream: #FAF7F0;
+      --cream-dark: #F0EBE0;
+      --text-dark: #1F1A12;
+      --text-mid: #3F3526;
+      --text-muted: #5F523D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── PARTÍCULAS ── */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--gold-pale) 0%, transparent 70%);
+      opacity: 0;
+      animation: floatUp var(--dur) var(--delay) infinite ease-in-out;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ── SEÇÕES ── */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,151,58,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(184,151,58,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(212,185,106,0.06) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .invite-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .monogram-wrap {
+      display: block;
+      width: min(480px, 88vw);
+      margin: 1rem auto 0;
+      filter: drop-shadow(0 4px 30px rgba(184,151,58,0.22));
+    }
+    .monogram-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .monogram::after { display: none; }
+
+    .couple-names {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 6vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--text-dark);
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.8s forwards;
+    }
+
+    .ampersand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.3em;
+      margin: 0 0.3em;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 3rem auto 2rem;
+      width: min(340px, 80vw);
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light));
+    }
+    .hero-divider::after { background: linear-gradient(270deg, transparent, var(--gold-light)); }
+    .divider-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .date-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      animation: fadeUp 1s 1.5s forwards;
+    }
+    .date-col {
+      padding: 0.8rem 2rem;
+      text-align: center;
+    }
+    .date-col-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.7rem);
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .date-col-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      letter-spacing: 0.1em;
+    }
+    .date-col-center {
+      border-left: 1px solid var(--gold-light);
+      border-right: 1px solid var(--gold-light);
+      padding: 0.8rem 2.5rem;
+    }
+    .date-day-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 14vw, 6rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 0.9;
+      display: block;
+    }
+    .date-year {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.5rem, 1.8vw, 0.65rem);
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.4rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      .date-year {
+        letter-spacing: 0.18em;
+        font-size: 0.52rem;
+      }
+    }
+
+    .hero-payment {
+      margin: 2.5rem auto 0;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s 1.7s forwards;
+    }
+    .hero-payment-label {
+      display: block;
+      margin-bottom: 0.9rem;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.68rem);
+      letter-spacing: 0.36em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+    }
+    .hero-payment-button {
+      display: inline-block;
+      width: min(440px, 90vw);
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--cream);
+      padding: 1rem 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(122,96,32,0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-payment-button + .hero-payment-button {
+      display: block;
+      margin: 0.8rem auto 0;
+    }
+    .hero-payment-button:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+
+    /* ── CONTAGEM REGRESSIVA ── */
+    .countdown-wrap {
+      width: min(560px, 92vw);
+      margin: 2.2rem auto 0;
+      padding: 1.1rem 1.2rem;
+      border-top: 1px solid rgba(184,151,58,0.35);
+      border-bottom: 1px solid rgba(184,151,58,0.35);
+      opacity: 0;
+      animation: fadeUp 1s 1.7s forwards;
+    }
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 2vw, 0.68rem);
+      letter-spacing: 0.42em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.9rem;
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+    }
+    .countdown-item {
+      text-align: center;
+      padding: 0.4rem 0.2rem;
+      border-right: 1px solid rgba(184,151,58,0.25);
+    }
+    .countdown-item:last-child { border-right: none; }
+    .countdown-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.65rem, 6vw, 2.7rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1;
+      display: block;
+    }
+    .countdown-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.48rem, 1.8vw, 0.58rem);
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.45rem;
+    }
+    @media (max-width: 520px) {
+      .countdown-wrap {
+        width: min(340px, 92vw);
+        padding: 1rem 0.7rem;
+        margin-top: 1.8rem;
+      }
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 0;
+      }
+      .countdown-item:nth-child(2) { border-right: none; }
+      .countdown-item:nth-child(1),
+      .countdown-item:nth-child(2) { border-bottom: 1px solid rgba(184,151,58,0.18); padding-bottom: 0.8rem; }
+      .countdown-item:nth-child(3),
+      .countdown-item:nth-child(4) { padding-top: 0.8rem; }
+    }
+
+    .local-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: var(--text-mid);
+      margin-top: 2.5rem;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: fadeUp 1s 1.8s forwards;
+    }
+
+    .scroll-cta {
+      margin-top: 4rem;
+      opacity: 0;
+      animation: fadeUp 1s 2.2s forwards;
+    }
+    .scroll-cta p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .scroll-arrow {
+      width: 24px; height: 24px;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg);
+      margin: 0 auto;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ── NAV DOTS ── */
+    .nav-dots {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s;
+      background: transparent;
+    }
+    .nav-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+    @media (max-width: 600px) { .nav-dots { display: none; } }
+
+    /* ── SECTION COMUM ── */
+    .section-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 300;
+      text-align: center;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem auto 3rem;
+      width: min(200px, 50vw);
+    }
+    .gold-divider::before, .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold-light);
+    }
+    .gold-divider-diamond {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── INFORMAÇÕES ── */
+    #info { background: var(--cream-dark); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 520px) { .info-grid { grid-template-columns: 1fr; } }
+
+    .info-card {
+      border: 1px solid rgba(184,151,58,0.3);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      background: rgba(250,247,240,0.8);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .info-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .info-card-corner {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .info-card-corner.tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+    .info-card-corner.tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+    .info-card-corner.bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; }
+    .info-card-corner.br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+    .info-icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dark);
+    }
+    .info-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 4px 10px rgba(184,151,58,0.16));
+    }
+    .info-icon .icon-fill-soft { fill: rgba(184,151,58,0.10); stroke: var(--gold); }
+    .info-icon .icon-accent { stroke: var(--gold); }
+    .info-icon .icon-dot { fill: var(--gold); stroke: none; }
+    .info-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .info-card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-dark);
+    }
+    .info-card-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .party-vibe-box {
+      margin-top: 2rem;
+      border: 1px solid rgba(184,151,58,0.4);
+      background: rgba(250,247,240,0.82);
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .party-vibe-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 1.4rem;
+    }
+    .party-vibe-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.55rem);
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 760px;
+      margin: 0 auto 1.8rem;
+    }
+    .party-vibe-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .party-vibe-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,151,58,0.45);
+      padding: 0.75rem 1.1rem;
+      background: rgba(255,255,255,0.28);
+    }
+    .party-vibe-note {
+      border-left: 2px solid var(--gold);
+      background: rgba(184,151,58,0.07);
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .adesao-box {
+      margin-top: 2rem;
+      border: 1px solid rgba(184,151,58,0.4);
+      background: rgba(184,151,58,0.05);
+      padding: 2.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      width: 100%;
+    }
+    .adesao-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 9vw, 4rem);
+      font-weight: 300;
+      color: var(--gold-dark);
+    }
+    .adesao-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .adesao-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── PROGRAMAÇÃO ── */
+    #programacao { background: var(--cream); }
+
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--gold-light) 10%, var(--gold-light) 90%, transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.2rem 0 1.2rem 1.5rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 1.6rem;
+      width: 9px; height: 9px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateX(50%);
+      box-shadow: 0 0 0 3px rgba(184,151,58,0.2);
+    }
+    .timeline-time {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      font-weight: 300;
+    }
+
+    /* ── CARDÁPIO ── */
+    #cardapio { background: var(--cream-dark); }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 520px) { .food-grid { grid-template-columns: 1fr; } }
+
+    .food-section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .food-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(184,151,58,0.15);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .food-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .food-item:last-child { border-bottom: none; }
+
+    .food-format-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-mid);
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.65;
+    }
+
+    /* ── PRESENÇA ── */
+    #presenca { background: var(--cream); }
+
+    .btn-gold {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 1.1rem 2.8rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 1.1rem 2.8rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .btn-outline:hover {
+      background: rgba(184,151,58,0.08);
+      transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-top: 3rem;
+    }
+
+    .presenca-form {
+      max-width: 440px;
+      margin: 3rem auto 0;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(184,151,58,0.4) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      padding: 0.7rem 0 !important;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.3s;
+      box-shadow: none !important;
+    }
+    .form-input:focus { border-bottom-color: var(--gold) !important; }
+    .form-select {
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    .success-msg {
+      display: none;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--gold-dark);
+      padding: 2rem;
+    }
+
+    /* ── PAGAMENTO ── */
+    .payment-summary {
+      border: 1px solid rgba(184,151,58,0.35);
+      background: rgba(184,151,58,0.05);
+      padding: 1.8rem 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .payment-summary.hidden { display: none; }
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(184,151,58,0.15);
+    }
+    .payment-row:last-of-type { border-bottom: none; }
+    .payment-row span:last-child { color: var(--text-dark); font-weight: 400; }
+    .payment-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(184,151,58,0.4);
+    }
+    .payment-total-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .payment-total-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold-dark);
+    }
+    .btn-payment {
+      display: inline-block;
+      width: 100%;
+      margin-top: 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--gold-dark);
+      border: 1px solid var(--gold-dark);
+      padding: 1.2rem 2rem;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-payment:hover {
+      background: #5c4718;
+      border-color: #5c4718;
+      transform: translateY(-2px);
+    }
+    .payment-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pessoas-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1rem 0;
+    }
+    .counter-btn {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .counter-btn:hover { background: var(--gold); color: var(--cream); }
+    .counter-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--text-dark);
+      min-width: 2.5rem;
+      text-align: center;
+    }
+    .counter-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    /* ── PRESENTES ── */
+    #contribuicao { background: var(--cream-dark); }
+    #contribuicao .section-inner { max-width: 760px; }
+    #contribuicao .adesao-box { margin-top: 0; }
+
+    #presentes { background: var(--cream-dark); }
+
+    .presentes-text {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+    }
+
+
+
+    .gift-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gift-card {
+      min-width: 178px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--text-dark);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+      font-weight: 500;
+      line-height: 1;
+      box-shadow: 0 8px 20px rgba(122,96,32,0.12);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+    .gift-card:hover {
+      transform: translateY(-4px);
+      background: var(--gold-dark);
+      color: var(--cream);
+      box-shadow: 0 12px 26px rgba(44,36,24,0.18);
+    }
+    .gift-card:focus-visible {
+      outline: 3px solid rgba(184,151,58,0.35);
+      outline-offset: 4px;
+    }
+    @media (max-width: 540px) {
+      .gift-options { gap: 0.75rem; }
+      .gift-card {
+        min-width: calc(50% - 0.5rem);
+        padding: 0.9rem 0.8rem;
+        font-size: 1rem;
+      }
+    }
+    .gift-icon {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      color: var(--gold-dark);
+    }
+    .gift-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 6px 12px rgba(122,96,32,0.12));
+    }
+    .gift-icon .svg-fill-soft { fill: rgba(184,151,58,0.10); stroke: var(--gold-dark); }
+    .gift-icon .svg-accent { stroke: var(--gold); }
+    .gift-icon .svg-accent-fill { fill: rgba(184,151,58,0.18); stroke: var(--gold); }
+    .gift-pix-key {
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+      word-break: break-all;
+    }
+    .gift-pix-key strong {
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+    .gift-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.7rem;
+      line-height: 1.7;
+    }
+    .gift-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 1.3rem;
+    }
+    .gift-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+    .gift-actions .btn-gold,
+    .gift-actions .btn-outline {
+      margin: 0;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.56rem;
+      letter-spacing: 0.24em;
+      flex: 1 1 135px;
+    }
+
+    body, p, .presentes-text, .food-item, .timeline-event, .location-address,
+    .info-card-sub, .adesao-note, .payment-note, .date-col-value, .local-text {
+      color: var(--text-mid);
+    }
+
+    .section-title, .info-card-value, .timeline-event, .counter-value,
+    .location-name, .couple-names, .payment-row span:last-child {
+      color: var(--text-dark);
+      font-weight: 400;
+    }
+
+    .section-label, .info-card-title, .food-section-title, .timeline-time,
+    .form-label, .payment-total-label, .adesao-label {
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    /* ── LOCALIZAÇÃO ── */
+    #localizacao { background: var(--cream); }
+
+    .location-box {
+      border: 1px solid rgba(184,151,58,0.3);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .location-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .location-address {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(2.5rem, 10vw, 4.5rem);
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .footer-date {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .footer-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250,247,240,0.5);
+    }
+
+    /* ── GLITTER CANVAS ── */
+    #glitter-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* monogram como link */
+    a.monogram {
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    a.monogram:hover {
+      text-shadow: 0 0 60px rgba(184,151,58,0.5), 0 2px 40px rgba(184,151,58,0.25);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ORNAMENTOS DECORATIVOS SVG ── */
+    .ornament {
+      display: block;
+      margin: 0 auto 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    .counter-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+    }
+    .counter-btn:hover { background: var(--gold); color: var(--cream); }
+    .counter-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      min-width: 2.5rem;
+      text-align: center;
+      line-height: 1;
+    }
+    .counter-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Partículas decorativas -->
+<div id="particles"></div>
+
+<!-- Navegação por pontos -->
+<nav class="nav-dots" aria-label="Navegação por seções">
+  <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
+  <div class="nav-dot" data-section="contribuicao" title="Contribuição" onclick="scrollToSection('contribuicao')"></div>
+  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
+  <div class="nav-dot" data-section="presentes" title="Presentes" onclick="scrollToSection('presentes')"></div>
+  <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
+  <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
+  <div class="nav-dot" data-section="cardapio" title="Cardápio" onclick="scrollToSection('cardapio')"></div>
+  <div class="nav-dot" data-section="localizacao" title="Local" onclick="scrollToSection('localizacao')"></div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="glitter-canvas"></canvas>
+  <div class="hero-content">
+    <span class="invite-text">Nossa união merece ser celebrada do nosso jeito</span>
+
+    <h1 class="couple-names">
+      Mateus <span class="ampersand">&</span> Pâmella
+    </h1>
+
+    <div class="hero-divider">
+      <div class="divider-diamond"></div>
+    </div>
+
+    <div class="date-block">
+      <div class="date-col">
+        <span class="date-col-label">Dia da semana</span>
+        <span class="date-col-value">Domingo</span>
+      </div>
+      <div class="date-col date-col-center">
+        <span class="date-col-label">Setembro</span>
+        <span class="date-day-big">06</span>
+        <span class="date-year">2 · 0 · 2 · 6</span>
+      </div>
+      <div class="date-col">
+        <span class="date-col-label">Horário</span>
+        <span class="date-col-value">12h00</span>
+      </div>
+    </div>
+
+    <div class="hero-payment">
+      <span class="hero-payment-label">Contribuição por pessoa</span>
+      <button class="hero-payment-button" type="button" onclick="scrollToSection('contribuicao')">
+        Pagamento contribuição · R$ 80,00
+      </button>
+      <button class="hero-payment-button" type="button" onclick="scrollToSection('presentes')">
+        Lista de Presentes
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── INFORMAÇÕES ── -->
+<section id="info">
+  <div class="section-inner">
+    <span class="section-label reveal">Detalhes do Evento</span>
+    <h2 class="section-title reveal">Informações</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="info-grid">
+      <div class="info-card reveal" style="cursor:pointer;" onclick="adicionarAgenda()" title="Adicionar à agenda">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <rect class="icon-fill-soft" x="10" y="12" width="28" height="26" rx="2.5"></rect>
+            <path class="icon-accent" d="M10 19h28"></path>
+            <path d="M17 9v6M31 9v6"></path>
+            <circle class="icon-dot" cx="18" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="24" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="30" cy="26" r="1.5"></circle>
+            <circle class="icon-dot" cx="18" cy="32" r="1.5"></circle>
+            <circle class="icon-dot" cx="24" cy="32" r="1.5"></circle>
+          </svg>
+        </span>
+        <span class="info-card-title">Data — clique para salvar na agenda</span>
+        <div class="info-card-value">06 de Setembro</div>
+        <div class="info-card-sub">Domingo · 2026</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <circle class="icon-fill-soft" cx="24" cy="24" r="15"></circle>
+            <path d="M24 15v10l7 4"></path>
+            <path class="icon-accent" d="M16 8l-3 3M32 8l3 3"></path>
+            <circle class="icon-dot" cx="24" cy="24" r="1.6"></circle>
+          </svg>
+        </span>
+        <span class="info-card-title">Horário</span>
+        <div class="info-card-value">12h00</div>
+        <div class="info-card-sub">Pontualmente</div>
+      </div>
+
+      <div class="info-card reveal" style="grid-column: 1 / -1; cursor:pointer;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank')" title="Abrir no Google Maps / GPS">
+        <div class="info-card-corner tl"></div>
+        <div class="info-card-corner tr"></div>
+        <div class="info-card-corner bl"></div>
+        <div class="info-card-corner br"></div>
+        <span class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path class="icon-fill-soft" d="M24 42s12-11.3 12-22A12 12 0 0 0 12 20c0 10.7 12 22 12 22Z"></path>
+            <circle cx="24" cy="20" r="4.5"></circle>
+            <path class="icon-accent" d="M16 41h16"></path>
+          </svg>
+        </span>
+        <span class="info-card-title">Local — clique para abrir no GPS</span>
+        <div class="info-card-value">Recanto Taveira</div>
+        <div class="info-card-sub">Chácara 14 · Franca – SP</div>
+      </div>
+
+    </div><!-- /info-grid -->
+
+    <div class="party-vibe-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <span class="section-label">O clima da festa</span>
+      <h3 class="party-vibe-title">Uma celebração lounge/bistrô</h3>
+      <p class="party-vibe-text">
+        Nossa festa foi pensada em um formato lounge/bistrô, diferente do tradicional casamento com mesas marcadas.
+        Teremos música ao vivo, espaços para circular, conversar, brindar e curtir a celebração de forma leve e descontraída.
+      </p>
+      <div class="party-vibe-tags" aria-label="Destaques do clima da festa">
+        <span class="party-vibe-tag">Música ao vivo</span>
+        <span class="party-vibe-tag">Lounge</span>
+        <span class="party-vibe-tag">Bistrô</span>
+        <span class="party-vibe-tag">Brindes</span>
+      </div>
+      <p class="party-vibe-note">
+        É claro: O ambiente também contará com cadeiras, áreas de descanso e alguns puffs espalhados pelo espaço.
+        Queremos viver uma celebração animada, acolhedora e cheia de boas memórias ao lado de pessoas especiais.
+      </p>
+    </div>
+
+    <div class="adesao-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <span class="adesao-label">Contribuição por pessoa</span>
+      <div class="adesao-price">R$ 80,00</div>
+      <p class="adesao-note">Para ficar ainda melhor, traga sua bebida preferida!<br>Cooler liberado 🥂</p>
+
+      <!-- Divisor -->
+      <div style="margin: 2rem auto; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,58,0.4), transparent);"></div>
+
+      <!-- Formas de pagamento -->
+      <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">Como pagar</span>
+
+      <!-- Tabs PIX / Crédito -->
+      <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
+        <button id="tab-pix" onclick="showTab('pix')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:var(--gold); color:var(--cream); cursor:pointer; transition:all 0.2s;">
+          PIX
+        </button>
+        <button id="tab-link" onclick="showTab('link')"
+          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; transition:all 0.2s;">
+          Crédito
+        </button>
+      </div>
+
+      <!-- Tab PIX -->
+      <div id="tab-pix-content">
+        <!-- QR Code via API -->
+        <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=fa0b5f63-334f-49b9-ab83-2d0db314b922&bgcolor=ffffff&color=7A6020&margin=2"
+            alt="QR Code PIX"
+            width="144" height="144"
+            style="display:block;" />
+        </div>
+
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-muted); margin-bottom:1rem;">
+          Escaneie o QR Code ou copie a chave abaixo
+        </p>
+
+        <!-- Chave PIX copiável -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+          <code id="pix-key"
+            style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
+            color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
+            padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
+            fa0b5f63-334f-49b9-ab83-2d0db314b922
+          </code>
+          <button onclick="copiarPix()"
+            class="btn-outline"
+            id="btn-copiar"
+            style="font-size:0.55rem; padding:0.6rem 1.2rem; margin:0.5rem 0;">
+            📋 Copiar chave
+          </button>
+        </div>
+        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: Chave aleatória · Banco Nubank</p>
+      </div>
+
+      <!-- Tab Link -->
+      <div id="tab-link-content" style="display:none;">
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          Clique no botão para ser redirecionado ao link de pagamento seguro
+        </p>
+        <a href="https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL"
+          target="_blank" rel="noopener noreferrer"
+          onclick="window.open('https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL','_blank'); return false;"
+          class="btn-gold" style="font-size:0.65rem; display:inline-block;">
+          💳 &nbsp; Pagar via Link
+        </a>
+      </div>
+
+    </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('presenca')">Ver mais</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFIRMAR PRESENÇA ── -->
+<section id="presenca">
+  <div class="section-inner">
+    <span class="section-label reveal">Sua presença é especial</span>
+    <h2 class="section-title reveal">Confirmar Presença</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="presenca-form reveal">
+
+      <!-- FORM -->
+      <div id="form-container">
+
+        <!-- Campo de nome + botão adicionar -->
+        <div class="form-group">
+          <label class="form-label" for="nome-input">Nome do convidado</label>
+          <div style="display:flex; gap: 0.8rem; align-items: flex-end;">
+            <input class="form-input" type="text" id="nome-input"
+              placeholder="Digite o nome completo"
+              style="flex:1;"
+              onkeydown="if(event.key==='Enter') adicionarNome()" />
+            <button class="btn-outline" onclick="adicionarNome()"
+              style="padding: 0.7rem 1.2rem; font-size:0.6rem; white-space:nowrap; flex-shrink:0;">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+
+        <!-- Lista de nomes adicionados -->
+        <div id="lista-nomes" style="margin-top: 1.5rem; display:none;">
+          <span class="form-label" style="display:block; margin-bottom:0.8rem;">Convidados adicionados</span>
+          <div id="nomes-items"></div>
+        </div>
+
+        <!-- Mensagem opcional -->
+        <div class="form-group" style="margin-top: 2rem;">
+          <label class="form-label" for="mensagem">Mensagem para os noivos (opcional)</label>
+          <textarea class="form-input" id="mensagem" rows="3"
+            placeholder="Uma palavra carinhosa..." style="resize: vertical;"></textarea>
+        </div>
+
+        <!-- Botão enviar -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button class="btn-gold" id="btn-enviar" style="width:100%; font-size:0.7rem; padding:1.3rem;" onclick="enviarPresenca()">
+            ✉️ &nbsp; Confirmar Presença
+          </button>
+          <p id="status-envio" style="margin-top:1rem; font-size:0.75rem; color:var(--text-muted); letter-spacing:0.04em; display:none;"></p>
+        </div>
+      </div>
+
+      <!-- SUCESSO -->
+      <div class="success-msg" id="success-msg">
+        <p>✨ Presença confirmada!</p>
+        <div id="nomes-confirmados" style="margin: 1rem 0; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-mid);"></div>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-muted); font-style:normal;">Nos vemos em 06.09.2026! 🥂</p>
+
+        <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-top:2rem; margin-bottom:1rem;">Pagar Adesão — R$ 80,00 por pessoa</p>
+
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
+          <button class="btn-gold" style="font-size:0.62rem; padding:1rem 1.5rem;"
+            onclick="copiarPixSucesso()">
+            🏦 &nbsp; PIX — Copiar Chave
+          </button>
+          <a href="https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL"
+            target="_blank" rel="noopener noreferrer"
+            onclick="window.open('https://invoice.infinitepay.io/mateusapolinario/20BeqykqEL','_blank'); return false;"
+            class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
+            💳 &nbsp; Crédito — Link
+          </a>
+        </div>
+        <p id="pix-copiado-msg" style="display:none; margin-top:0.8rem; font-size:0.75rem; color:var(--gold-dark);">✓ Chave PIX copiada! Cole no seu banco.</p>
+      </div>
+
+    </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('programacao')">Ver mais</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PROGRAMAÇÃO ── -->
+<section id="programacao">
+  <div class="section-inner">
+    <span class="section-label reveal">O que vem por aí</span>
+    <h2 class="section-title reveal">Programação</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">12h00</span>
+        <span class="timeline-event">Abertura e cerimônia</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">14h00</span>
+        <span class="timeline-event">Grupo Simplicidade</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">16h30</span>
+        <span class="timeline-event">Sunset com Leo Alves</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">17h30</span>
+        <span class="timeline-event">Banda a definir</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">19h30</span>
+        <span class="timeline-event">Sarau — Liberado!</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">20h00</span>
+        <span class="timeline-event">After com Leo Alves</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <span class="timeline-time">22h00</span>
+        <span class="timeline-event">Encerramento</span>
+      </div>
+    </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('cardapio')">Ver mais</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARDÁPIO ── -->
+<section id="cardapio">
+  <div class="section-inner">
+    <span class="section-label reveal">O melhor do evento</span>
+    <h2 class="section-title reveal">Cardápio</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <p class="food-format-note reveal">
+      Formato open food, sem lugares marcados: ilhas de comida, bistrôs e espaços para circular.
+    </p>
+
+    <div class="food-grid">
+      <div class="reveal">
+        <span class="food-section-title">Open Food</span>
+        <div class="food-item">Churrasco</div>
+        <div class="food-item">Mesa de frios e aperitivos</div>
+        <div class="food-item">Arroz no arado</div>
+        <div class="food-item">Doces e Bolo</div>
+      </div>
+      <div class="reveal">
+        <span class="food-section-title">Bebidas</span>
+        <div class="food-item">Traga sua favorita</div>
+        <div class="food-item">Cooler liberado</div>
+        <div class="food-item">Área de drinks</div>
+      </div>
+    </div>
+
+    <div class="cta-buttons reveal">
+      <button class="btn-outline" onclick="scrollToSection('presentes')">Ver mais</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── LISTA DE PRESENTES ── -->
+<section id="presentes">
+  <div class="section-inner">
+    <span class="section-label reveal">Com carinho</span>
+    <h2 class="section-title reveal">Lista de Presentes</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <p class="presentes-text reveal">
+      Sua presença já é o maior presente que poderíamos receber.<br><br>
+      Mas se quiser nos presentear de alguma forma, ficamos muito gratos por qualquer contribuição para nossa nova vida juntos.
+    </p>
+
+    <div class="gift-options reveal">
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 25 reais">R$25,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 50 reais">R$50,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 80 reais">R$80,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 100 reais">R$100,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 150 reais">R$150,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 200 reais">R$200,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 500 reais">R$500,00</a>
+      <a class="gift-card" href="https://linknabio.gg/mateusapolinario" target="_blank" rel="noopener noreferrer" aria-label="Escolher outro valor de presente">Outro</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCALIZAÇÃO ── -->
+<section id="localizacao">
+  <div class="section-inner">
+    <span class="section-label reveal">Onde nos encontrar</span>
+    <h2 class="section-title reveal">Como Chegar</h2>
+    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+
+    <div class="location-box reveal">
+      <div class="info-card-corner tl"></div>
+      <div class="info-card-corner tr"></div>
+      <div class="info-card-corner bl"></div>
+      <div class="info-card-corner br"></div>
+      <div class="location-name">Recanto Taveira · Franca</div>
+      <div class="location-address" style="line-height:1.8;">
+        Chácara 14<br>
+        <span style="font-size:0.9em;">Chácara 14 · Franca – SP</span>
+      </div>
+      <a href="https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.6rem; display:inline-flex; align-items:center; gap:0.6rem;" onclick="window.open('https://www.google.com/maps/place/Av.+Manoel+Jacinto+Netto,+9009+-+Franca+Polo+Club,+Franca+-+SP/data=!4m2!3m1!1s0x94b0aee11c96a4a9:0x93f6792bec0c87fc?sa=X&ved=1t:242&ictx=111','_blank'); return false;">
+        📍 &nbsp;Abrir no GPS / Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-names">Mateus & Pâmella</span>
+  <span class="footer-date">06 · 09 · 2026</span>
+  <p class="footer-msg">Seremos gratos em ter sua presença!</p>
+</footer>
+
+<script>
+  // Ordem principal: datas, contribuição, confirmação e lista de presentes.
+  const heroSection = document.getElementById('hero');
+  const infoSection = document.getElementById('info');
+  const presencaSection = document.getElementById('presenca');
+  const presentesSection = document.getElementById('presentes');
+  const adesaoBox = document.querySelector('.adesao-box');
+
+  if (heroSection && infoSection && presencaSection && presentesSection && adesaoBox) {
+    const contribuicaoSection = document.createElement('section');
+    contribuicaoSection.id = 'contribuicao';
+    contribuicaoSection.innerHTML = `
+      <div class="section-inner">
+        <span class="section-label reveal">Celebre conosco</span>
+        <h2 class="section-title reveal">Contribuição</h2>
+        <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
+      </div>`;
+    heroSection.insertAdjacentElement('afterend', contribuicaoSection);
+    contribuicaoSection.querySelector('.section-inner').appendChild(adesaoBox);
+    contribuicaoSection.insertAdjacentElement('afterend', presencaSection);
+    presencaSection.insertAdjacentElement('afterend', presentesSection);
+  }
+
+
+
+  // ── Contagem regressiva até 06/09/2026 às 12h
+  function atualizarContagemRegressiva() {
+    const destino = new Date('2026-09-06T12:00:00-03:00').getTime();
+    const agora = new Date().getTime();
+    const distancia = destino - agora;
+
+    const diasEl = document.getElementById('countdown-days');
+    const horasEl = document.getElementById('countdown-hours');
+    const minutosEl = document.getElementById('countdown-minutes');
+    const segundosEl = document.getElementById('countdown-seconds');
+
+    if (!diasEl || !horasEl || !minutosEl || !segundosEl) return;
+
+    if (distancia <= 0) {
+      diasEl.textContent = '00';
+      horasEl.textContent = '00';
+      minutosEl.textContent = '00';
+      segundosEl.textContent = '00';
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    diasEl.textContent = String(dias).padStart(2, '0');
+    horasEl.textContent = String(horas).padStart(2, '0');
+    minutosEl.textContent = String(minutos).padStart(2, '0');
+    segundosEl.textContent = String(segundos).padStart(2, '0');
+  }
+
+  atualizarContagemRegressiva();
+  setInterval(atualizarContagemRegressiva, 1000);
+
+  // ── Glitter canvas no hero
+  (function() {
+    const canvas = document.getElementById('glitter-canvas');
+    const hero = document.getElementById('hero');
+    const ctx = canvas.getContext('2d');
+    let W, H, glitters = [];
+
+    const GOLD_COLORS = [
+      'rgba(234,217,139,',
+      'rgba(212,185,106,',
+      'rgba(184,151,58,',
+      'rgba(250,230,160,',
+      'rgba(200,170,80,',
+    ];
+
+    function resize() {
+      W = canvas.width = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+    }
+
+    function createGlitter() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        size: Math.random() * 2.5 + 0.5,
+        alpha: 0,
+        maxAlpha: Math.random() * 0.85 + 0.15,
+        speed: Math.random() * 0.015 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        color: GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)],
+        shape: Math.random() > 0.6 ? 'star' : 'circle',
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.03,
+        drift: (Math.random() - 0.5) * 0.3,
+        vy: -(Math.random() * 0.4 + 0.1),
+      };
+    }
+
+    function drawStar(ctx, x, y, r, alpha, color, rotation) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++) {
+        const angle = (i / 4) * Math.PI * 2;
+        const outer = r;
+        const inner = r * 0.3;
+        ctx.lineTo(Math.cos(angle) * outer, Math.sin(angle) * outer);
+        ctx.lineTo(Math.cos(angle + Math.PI / 4) * inner, Math.sin(angle + Math.PI / 4) * inner);
+      }
+      ctx.closePath();
+      ctx.fillStyle = color + alpha + ')';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function init() {
+      glitters = [];
+      for (let i = 0; i < 180; i++) {
+        const g = createGlitter();
+        g.phase = Math.random() * Math.PI * 2; // random start phase
+        glitters.push(g);
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      glitters.forEach((g, i) => {
+        // pulse alpha
+        g.phase += g.speed;
+        g.alpha = Math.abs(Math.sin(g.phase)) * g.maxAlpha;
+
+        // slow drift upward
+        g.y += g.vy;
+        g.x += g.drift;
+        g.rotation += g.rotSpeed;
+
+        // reset when off screen
+        if (g.y < -10 || g.x < -10 || g.x > W + 10) {
+          glitters[i] = createGlitter();
+          glitters[i].y = H + 5;
+        }
+
+        if (g.shape === 'star') {
+          drawStar(ctx, g.x, g.y, g.size * 1.8, g.alpha, g.color, g.rotation);
+        } else {
+          ctx.beginPath();
+          ctx.arc(g.x, g.y, g.size, 0, Math.PI * 2);
+          ctx.fillStyle = g.color + g.alpha + ')';
+          ctx.fill();
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    init();
+    animate();
+    window.addEventListener('resize', () => { resize(); init(); });
+  })();
+
+  // ── Partículas flutuantes (fundo global)
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${Math.random() * 100}%;
+      --dur: ${Math.random() * 12 + 10}s;
+      --delay: ${Math.random() * 10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  // ── Nav dots ativos
+  const sections = ['hero','contribuicao','presenca','presentes','info','programacao','cardapio','localizacao'];
+  const sectionEls = sections.map(id => document.getElementById(id));
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const dotObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        dots.forEach(d => d.classList.remove('active'));
+        const idx = sections.indexOf(e.target.id);
+        if (idx >= 0) dots[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sectionEls.forEach(el => el && dotObserver.observe(el));
+
+  // ── Scroll to section
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── PIX tabs e copiar chave
+  // ── Adicionar à Agenda
+  function adicionarAgenda() {
+    document.getElementById('modal-agenda').style.display = 'flex';
+  }
+
+  function fecharModal() {
+    document.getElementById('modal-agenda').style.display = 'none';
+  }
+
+  function abrirAppleCalendar() {
+    // Gera .ics e faz download — iOS abre no Apple Calendar
+    const ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:20260906T120000\r\nDTEND:20260906T220000\r\nSUMMARY:União Mateus & Pamella\r\nDESCRIPTION:Festa de união. Adesao R$ 80 por pessoa.\r\nLOCATION:Recanto Taveira Chacara 14 Franca SP\r\nEND:VEVENT\r\nEND:VCALENDAR';
+    const blob = new Blob([ics], {type: 'text/calendar'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'casamento.ics';
+    link.click();
+    fecharModal();
+  }
+
+  function abrirGoogleCalendar() {
+    const url = 'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text=Uni%C3%A3o+Mateus+%26+P%C3%A2mella'
+      + '&dates=20260906T120000/20260906T220000'
+      + '&details=Festa+de+uni%C3%A3o+de+Mateus+%26+P%C3%A2mella.+Ades%C3%A3o%3A+R%24+80+por+pessoa.+Cooler+liberado!'
+      + '&location=Recanto+Taveira+Chacara+14+Franca+SP'
+      + '&sf=true&output=xml';
+    window.open(url, '_blank');
+    fecharModal();
+  }
+
+
+  function copiarPixSucesso() {
+    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    navigator.clipboard.writeText(chave).then(() => {
+      document.getElementById('pix-copiado-msg').style.display = 'block';
+    }).catch(() => {
+      prompt('Copie a chave PIX:', chave);
+    });
+  }
+
+  function showTab(tab) {
+    const isPix = tab === 'pix';
+    document.getElementById('tab-pix-content').style.display = isPix ? 'block' : 'none';
+    document.getElementById('tab-link-content').style.display = isPix ? 'none' : 'block';
+    document.getElementById('tab-pix').style.background = isPix ? 'var(--gold)' : 'transparent';
+    document.getElementById('tab-pix').style.color = isPix ? 'var(--cream)' : 'var(--gold)';
+    document.getElementById('tab-link').style.background = isPix ? 'transparent' : 'var(--gold)';
+    document.getElementById('tab-link').style.color = isPix ? 'var(--gold)' : 'var(--cream)';
+  }
+
+  function copiarPix() {
+    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    navigator.clipboard.writeText(chave).then(() => {
+      const btn = document.getElementById('btn-copiar');
+      btn.textContent = '✓ Copiado!';
+      btn.style.borderColor = 'var(--gold-dark)';
+      btn.style.color = 'var(--gold-dark)';
+      setTimeout(() => {
+        btn.textContent = '📋 Copiar chave';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2500);
+    });
+  }
+
+
+
+  function copiarPixPresente(tipo) {
+    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    navigator.clipboard.writeText(chave).then(() => {
+      const msg = document.getElementById('pix-presente-msg');
+      msg.textContent = '✓ Chave PIX copiada! Cole no seu banco e informe o valor desejado para ' + tipo + '.';
+      msg.style.display = 'block';
+    }).catch(() => {
+      prompt('Copie a chave PIX:', chave);
+    });
+  }
+
+  // ── Google Sheets + Lista de nomes
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxLcYPjAqX1ml19GTkZOwFCc5ZP8AEM_dhnCuuo5Ty4TxaazzjIjvHxzqEMMKyuH7NqUw/exec';
+  let listaNomes = [];
+
+  function adicionarNome() {
+    const input = document.getElementById('nome-input');
+    const nome = input.value.trim();
+    if (!nome) { input.focus(); return; }
+    if (listaNomes.includes(nome)) {
+      input.value = '';
+      input.focus();
+      return;
+    }
+    listaNomes.push(nome);
+    input.value = '';
+    input.focus();
+    renderizarNomes();
+  }
+
+  function removerNome(idx) {
+    listaNomes.splice(idx, 1);
+    renderizarNomes();
+  }
+
+  function renderizarNomes() {
+    const container = document.getElementById('nomes-items');
+    const lista = document.getElementById('lista-nomes');
+    if (listaNomes.length === 0) {
+      lista.style.display = 'none';
+      return;
+    }
+    lista.style.display = 'block';
+    container.innerHTML = listaNomes.map((nome, i) => `
+      <div style="display:flex; justify-content:space-between; align-items:center;
+        padding: 0.7rem 0; border-bottom: 1px solid rgba(184,151,58,0.15);">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:var(--text-dark);">
+          ${i + 1}. ${nome}
+        </span>
+        <button onclick="removerNome(${i})"
+          style="background:none; border:none; cursor:pointer; color:var(--text-muted);
+          font-size:1rem; padding:0.2rem 0.5rem; line-height:1;"
+          title="Remover">✕</button>
+      </div>
+    `).join('');
+  }
+
+  async function enviarPresenca() {
+    if (listaNomes.length === 0) {
+      alert('Adicione pelo menos um nome antes de confirmar.');
+      return;
+    }
+    const mensagem = document.getElementById('mensagem').value.trim();
+    const btn = document.getElementById('btn-enviar');
+    const status = document.getElementById('status-envio');
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    status.style.display = 'block';
+    status.style.color = 'var(--text-muted)';
+    status.textContent = 'Registrando sua presença...';
+
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nomes: listaNomes, mensagem: mensagem })
+      });
+
+      // Sucesso
+      const nomesHtml = listaNomes.map(n => `<div style="padding:0.2rem 0;">✓ ${n}</div>`).join('');
+      document.getElementById('nomes-confirmados').innerHTML = nomesHtml;
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = '✉️  Confirmar Presença';
+      status.style.color = '#c0392b';
+      status.textContent = 'Erro ao enviar. Tente novamente.';
+    }
+  }
+</script>
+
+<!-- Modal agenda -->
+<div id="modal-agenda" style="display:none; position:fixed; inset:0; z-index:999;
+  background:rgba(44,36,24,0.6); align-items:center; justify-content:center; padding:1.5rem;">
+  <div style="background:var(--cream); max-width:360px; width:100%; padding:2.5rem 2rem;
+    text-align:center; position:relative; border:1px solid rgba(184,151,58,0.4);">
+    <div class="info-card-corner tl"></div>
+    <div class="info-card-corner tr"></div>
+    <div class="info-card-corner bl"></div>
+    <div class="info-card-corner br"></div>
+
+    <button onclick="fecharModal()" style="position:absolute; top:0.8rem; right:1rem;
+      background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+
+    <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em;
+      color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1rem;">
+      Salvar na Agenda
+    </span>
+
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic;
+      color:var(--text-mid); margin-bottom:2rem; line-height:1.6;">
+      Escolha como salvar o evento<br>06 de Setembro · 12h00
+    </p>
+
+    <!-- Apple Calendar -->
+    <button onclick="abrirAppleCalendar()"
+      class="btn-gold"
+      style="display:block; width:100%; font-size:0.62rem; padding:1rem; margin-bottom:0.8rem; box-sizing:border-box; cursor:pointer;">
+      🍎 &nbsp; Apple Calendar (iPhone)
+    </button>
+
+    <!-- Google Calendar -->
+    <button onclick="abrirGoogleCalendar()"
+      class="btn-outline"
+      style="display:block; width:100%; font-size:0.62rem; padding:1rem; box-sizing:border-box; cursor:pointer;">
+      📅 &nbsp; Google Calendar
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
