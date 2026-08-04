@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- VERSAO ATUALIZADA 2026-08-03: pagamentos no Mercado Pago e botao Outro na Final Feliz -->
+<!-- VERSAO ATUALIZADA 2026-08-04: PIX Banco do Brasil, pagamentos no Mercado Pago e botao Outros na Final Feliz -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -1372,7 +1372,7 @@
         <!-- QR Code via API -->
         <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
           <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=fa0b5f63-334f-49b9-ab83-2d0db314b922&bgcolor=ffffff&color=7A6020&margin=2"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F&bgcolor=ffffff&color=7A6020&margin=2"
             alt="QR Code PIX"
             width="144" height="144"
             style="display:block;" />
@@ -1388,7 +1388,7 @@
             style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
             color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
             padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
-            fa0b5f63-334f-49b9-ab83-2d0db314b922
+            00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F
           </code>
           <button onclick="copiarPix()"
             class="btn-outline"
@@ -1397,7 +1397,7 @@
             📋 Copiar chave
           </button>
         </div>
-        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: Chave aleatória · Banco Nubank</p>
+        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: PIX Copia e Cola · Banco do Brasil</p>
       </div>
 
       <!-- Tab Link -->
@@ -1606,7 +1606,7 @@
       <a class="gift-card" href="https://link.mercadopago.com.br/pamellaemateus" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 150 reais">R$150,00</a>
       <a class="gift-card" href="https://link.mercadopago.com.br/pamellaemateus" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 200 reais">R$200,00</a>
       <a class="gift-card" href="https://link.mercadopago.com.br/pamellaemateus" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 500 reais">R$500,00</a>
-      <a class="gift-card gift-card-registry" href="https://www.finalfeliz.de/pamella-alves-mateus-apolinario" target="_blank" rel="noopener noreferrer" aria-label="Abrir lista de presentes">Lista de presentes</a>
+      <a class="gift-card gift-card-registry" href="https://www.finalfeliz.de/pamella-alves-mateus-apolinario" target="_blank" rel="noopener noreferrer" aria-label="Ver outras opções de presentes">Outros</a>
     </div>
   </div>
 </section>
@@ -1887,7 +1887,7 @@
 
 
   function copiarPixSucesso() {
-    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
     navigator.clipboard.writeText(chave).then(() => {
       document.getElementById('pix-copiado-msg').style.display = 'block';
     }).catch(() => {
@@ -1906,7 +1906,7 @@
   }
 
   function copiarPix() {
-    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
     navigator.clipboard.writeText(chave).then(() => {
       const btn = document.getElementById('btn-copiar');
       btn.textContent = '✓ Copiado!';
@@ -1923,7 +1923,7 @@
 
 
   function copiarPixPresente(tipo) {
-    const chave = 'fa0b5f63-334f-49b9-ab83-2d0db314b922';
+    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
     navigator.clipboard.writeText(chave).then(() => {
       const msg = document.getElementById('pix-presente-msg');
       msg.textContent = '✓ Chave PIX copiada! Cole no seu banco e informe o valor desejado para ' + tipo + '.';
