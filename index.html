@@ -966,6 +966,39 @@
     .gift-card-registry:focus-visible {
       outline-color: rgba(29,95,167,0.4);
     }
+    .gift-credit-option {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .gift-credit-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+    .gift-message-form {
+      max-width: 520px;
+      margin: 2.6rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,151,58,0.22);
+    }
+    .gift-message-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 1.4rem;
+    }
+    .gift-message-status {
+      display: none;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
     @media (max-width: 540px) {
       .gift-options { gap: 0.75rem; }
       .gift-card {
@@ -1608,6 +1641,35 @@
       <a class="gift-card" href="https://nubank.com.br/cobrar/11qvo8/6a71d532-a8da-4a84-9eb0-c4596933f569" target="_blank" rel="noopener noreferrer" aria-label="Presentear com 500 reais">R$500,00</a>
       <a class="gift-card gift-card-registry" href="https://nubank.com.br/cobrar/11qvo8/6a71d1f4-254d-425a-8e9d-90d9791a056b" target="_blank" rel="noopener noreferrer" aria-label="Escolher outro valor de presente">Outro valor</a>
     </div>
+
+    <div class="gift-credit-option reveal">
+      <p class="gift-credit-text">Prefere presentear no cartão de crédito?</p>
+      <a href="https://link.mercadopago.com.br/pamellaemateus"
+        target="_blank" rel="noopener noreferrer"
+        onclick="window.open('https://link.mercadopago.com.br/pamellaemateus','_blank'); return false;"
+        class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
+        &#128179; &nbsp; Cartão de crédito
+      </a>
+    </div>
+
+    <div class="gift-message-form reveal">
+      <p class="gift-message-title">Mensagem para os noivos</p>
+      <div class="form-group">
+        <label class="form-label" for="presente-nome">Seu nome (opcional)</label>
+        <input class="form-input" type="text" id="presente-nome" placeholder="Como devemos assinar?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="presente-mensagem">Mensagem</label>
+        <textarea class="form-input" id="presente-mensagem" rows="4"
+          placeholder="Deixe uma mensagem carinhosa..." style="resize: vertical;"></textarea>
+      </div>
+      <div style="text-align:center;">
+        <button class="btn-gold" id="btn-mensagem-presente" style="width:100%; max-width:360px; font-size:0.64rem; padding:1rem 1.3rem;" onclick="enviarMensagemPresente()">
+          Enviar mensagem
+        </button>
+        <p id="status-mensagem-presente" class="gift-message-status"></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2011,6 +2073,57 @@
     } catch (err) {
       btn.disabled = false;
       btn.textContent = '✉️  Confirmar Presença';
+      status.style.color = '#c0392b';
+      status.textContent = 'Erro ao enviar. Tente novamente.';
+    }
+  }
+
+  async function enviarMensagemPresente() {
+    const nome = document.getElementById('presente-nome').value.trim();
+    const mensagem = document.getElementById('presente-mensagem').value.trim();
+    const btn = document.getElementById('btn-mensagem-presente');
+    const status = document.getElementById('status-mensagem-presente');
+
+    if (!mensagem) {
+      status.style.display = 'block';
+      status.style.color = '#c0392b';
+      status.textContent = 'Escreva uma mensagem antes de enviar.';
+      document.getElementById('presente-mensagem').focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    status.style.display = 'block';
+    status.style.color = 'var(--text-muted)';
+    status.textContent = 'Registrando sua mensagem...';
+
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tipo: 'mensagem_presente',
+          nome: nome,
+          mensagem: mensagem,
+          origem: 'presentes'
+        })
+      });
+
+      document.getElementById('presente-nome').value = '';
+      document.getElementById('presente-mensagem').value = '';
+      status.style.color = 'var(--gold-dark)';
+      status.textContent = 'Mensagem enviada com carinho. Obrigado!';
+      btn.textContent = 'Mensagem enviada';
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensagem';
+      }, 2500);
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensagem';
       status.style.color = '#c0392b';
       status.textContent = 'Erro ao enviar. Tente novamente.';
     }
