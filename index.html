@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- VERSAO ATUALIZADA 2026-08-04: PIX Banco do Brasil, contribuicao no Mercado Pago e presentes no Nubank -->
+<!-- VERSAO ATUALIZADA 2026-08-14: confirmacoes e pagamentos de contribuicao encerrados -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -583,6 +583,26 @@
       color: var(--text-muted);
       margin-top: 1rem;
       font-style: italic;
+    }
+    .confirmacoes-encerradas {
+      max-width: 560px;
+      margin: 2rem auto 0;
+      padding: 2rem;
+      border: 1px solid rgba(184,151,58,0.4);
+      background: rgba(184,151,58,0.07);
+      text-align: center;
+    }
+    .confirmacoes-encerradas-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+    }
+    .confirmacoes-encerradas-texto {
+      color: var(--text-mid);
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     /* ── PROGRAMAÇÃO ── */
@@ -1229,8 +1249,7 @@
 <!-- Navegação por pontos -->
 <nav class="nav-dots" aria-label="Navegação por seções">
   <div class="nav-dot active" data-section="hero" title="Início" onclick="scrollToSection('hero')"></div>
-  <div class="nav-dot" data-section="contribuicao" title="Contribuição" onclick="scrollToSection('contribuicao')"></div>
-  <div class="nav-dot" data-section="presenca" title="Confirmar" onclick="scrollToSection('presenca')"></div>
+  <div class="nav-dot" data-section="contribuicao" title="Confirmações encerradas" onclick="scrollToSection('contribuicao')"></div>
   <div class="nav-dot" data-section="presentes" title="Presentes" onclick="scrollToSection('presentes')"></div>
   <div class="nav-dot" data-section="info" title="Informações" onclick="scrollToSection('info')"></div>
   <div class="nav-dot" data-section="programacao" title="Programação" onclick="scrollToSection('programacao')"></div>
@@ -1270,9 +1289,9 @@
     </div>
 
     <div class="hero-payment">
-      <span class="hero-payment-label">Contribuição por pessoa</span>
+      <span class="hero-payment-label">Confirmações</span>
       <button class="hero-payment-button" type="button" onclick="scrollToSection('contribuicao')">
-        Pagamento contribuição · R$ 80,00
+        Confirmações encerradas
       </button>
       <button class="hero-payment-button" type="button" onclick="scrollToSection('presentes')">
         Lista de Presentes
@@ -1376,161 +1395,12 @@
       <div class="info-card-corner tr"></div>
       <div class="info-card-corner bl"></div>
       <div class="info-card-corner br"></div>
-      <span class="adesao-label">Contribuição por pessoa</span>
-      <div class="adesao-price">R$ 80,00</div>
-      <p class="adesao-note">Para ficar ainda melhor, traga sua bebida preferida!<br>Cooler liberado 🥂</p>
-
-      <!-- Divisor -->
-      <div style="margin: 2rem auto; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,58,0.4), transparent);"></div>
-
-      <!-- Formas de pagamento -->
-      <span style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">Como pagar</span>
-
-      <!-- Tabs PIX / Crédito -->
-      <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
-        <button id="tab-pix" onclick="showTab('pix')"
-          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
-          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:var(--gold); color:var(--cream); cursor:pointer; transition:all 0.2s;">
-          PIX
-        </button>
-        <button id="tab-link" onclick="showTab('link')"
-          style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
-          padding:0.7rem 1.8rem; border:1px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; transition:all 0.2s;">
-          Crédito
-        </button>
-      </div>
-
-      <!-- Tab PIX -->
-      <div id="tab-pix-content">
-        <!-- QR Code via API -->
-        <div style="margin: 0 auto 1.5rem; width:160px; height:160px; padding:8px; border:1px solid rgba(184,151,58,0.4); background:#fff;">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F&bgcolor=ffffff&color=7A6020&margin=2"
-            alt="QR Code PIX"
-            width="144" height="144"
-            style="display:block;" />
-        </div>
-
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-muted); margin-bottom:1rem;">
-          Escaneie o QR Code ou copie a chave abaixo
-        </p>
-
-        <!-- Chave PIX copiável -->
-        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
-          <code id="pix-key"
-            style="font-family:'Montserrat',sans-serif; font-size:0.65rem; letter-spacing:0.05em;
-            color:var(--text-mid); background:rgba(184,151,58,0.08); border:1px solid rgba(184,151,58,0.25);
-            padding:0.5rem 0.8rem; word-break:break-all; max-width:280px; display:block; text-align:center;">
-            00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F
-          </code>
-          <button onclick="copiarPix()"
-            class="btn-outline"
-            id="btn-copiar"
-            style="font-size:0.55rem; padding:0.6rem 1.2rem; margin:0.5rem 0;">
-            📋 Copiar chave
-          </button>
-        </div>
-        <p style="margin-top:0.8rem; font-size:0.7rem; color:var(--text-muted);">Tipo: PIX Copia e Cola · Banco do Brasil</p>
-      </div>
-
-      <!-- Tab Link -->
-      <div id="tab-link-content" style="display:none;">
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--text-muted); margin-bottom:1.5rem;">
-          Clique no botão para ser redirecionado ao link de pagamento seguro
-        </p>
-        <a href="https://link.mercadopago.com.br/pamellaemateus"
-          target="_blank" rel="noopener noreferrer"
-          onclick="window.open('https://link.mercadopago.com.br/pamellaemateus','_blank'); return false;"
-          class="btn-gold" style="font-size:0.65rem; display:inline-block;">
-          💳 &nbsp; Pagar via Link
-        </a>
-      </div>
+      <span class="adesao-label">Aviso importante</span>
+      <div class="confirmacoes-encerradas-titulo">Confirmações encerradas</div>
+      <p class="confirmacoes-encerradas-texto">Devido à capacidade de pessoas por espaço, as confirmações estão encerradas.</p>
 
     </div>
 
-    <div class="cta-buttons reveal">
-      <button class="btn-outline" onclick="scrollToSection('presenca')">Ver mais</button>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONFIRMAR PRESENÇA ── -->
-<section id="presenca">
-  <div class="section-inner">
-    <span class="section-label reveal">Sua presença é especial</span>
-    <h2 class="section-title reveal">Confirmar Presença</h2>
-    <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
-
-    <div class="presenca-form reveal">
-
-      <!-- FORM -->
-      <div id="form-container">
-
-        <!-- Campo de nome + botão adicionar -->
-        <div class="form-group">
-          <label class="form-label" for="nome-input">Nome do convidado</label>
-          <div style="display:flex; gap: 0.8rem; align-items: flex-end;">
-            <input class="form-input" type="text" id="nome-input"
-              placeholder="Digite o nome completo"
-              style="flex:1;"
-              onkeydown="if(event.key==='Enter') adicionarNome()" />
-            <button class="btn-outline" onclick="adicionarNome()"
-              style="padding: 0.7rem 1.2rem; font-size:0.6rem; white-space:nowrap; flex-shrink:0;">
-              + Adicionar
-            </button>
-          </div>
-        </div>
-
-        <!-- Lista de nomes adicionados -->
-        <div id="lista-nomes" style="margin-top: 1.5rem; display:none;">
-          <span class="form-label" style="display:block; margin-bottom:0.8rem;">Convidados adicionados</span>
-          <div id="nomes-items"></div>
-        </div>
-
-        <!-- Mensagem opcional -->
-        <div class="form-group" style="margin-top: 2rem;">
-          <label class="form-label" for="mensagem">Mensagem para os noivos (opcional)</label>
-          <textarea class="form-input" id="mensagem" rows="3"
-            placeholder="Uma palavra carinhosa..." style="resize: vertical;"></textarea>
-        </div>
-
-        <!-- Botão enviar -->
-        <div style="text-align: center; margin-top: 2.5rem;">
-          <button class="btn-gold" id="btn-enviar" style="width:100%; font-size:0.7rem; padding:1.3rem;" onclick="enviarPresenca()">
-            ✉️ &nbsp; Confirmar Presença
-          </button>
-          <p id="status-envio" style="margin-top:1rem; font-size:0.75rem; color:var(--text-muted); letter-spacing:0.04em; display:none;"></p>
-        </div>
-      </div>
-
-      <!-- SUCESSO -->
-      <div class="success-msg" id="success-msg">
-        <p>✨ Presença confirmada!</p>
-        <div id="nomes-confirmados" style="margin: 1rem 0; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-mid);"></div>
-        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-muted); font-style:normal;">Nos vemos em 06.09.2026! 🥂</p>
-
-        <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-top:2rem; margin-bottom:1rem;">Pagar Adesão — R$ 80,00 por pessoa</p>
-
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;">
-          <button class="btn-gold" style="font-size:0.62rem; padding:1rem 1.5rem;"
-            onclick="copiarPixSucesso()">
-            🏦 &nbsp; PIX — Copiar Chave
-          </button>
-          <a href="https://link.mercadopago.com.br/pamellaemateus"
-            target="_blank" rel="noopener noreferrer"
-            onclick="window.open('https://link.mercadopago.com.br/pamellaemateus','_blank'); return false;"
-            class="btn-outline" style="font-size:0.62rem; padding:1rem 1.5rem;">
-            💳 &nbsp; Crédito — Link
-          </a>
-        </div>
-        <p id="pix-copiado-msg" style="display:none; margin-top:0.8rem; font-size:0.75rem; color:var(--gold-dark);">✓ Chave PIX copiada! Cole no seu banco.</p>
-      </div>
-
-    </div>
-
-    <div class="cta-buttons reveal">
-      <button class="btn-outline" onclick="scrollToSection('programacao')">Ver mais</button>
-    </div>
   </div>
 </section>
 
@@ -1705,26 +1575,24 @@
 </footer>
 
 <script>
-  // Ordem principal: datas, contribuição, confirmação e lista de presentes.
+  // Ordem principal: datas, aviso de confirmações encerradas e lista de presentes.
   const heroSection = document.getElementById('hero');
   const infoSection = document.getElementById('info');
-  const presencaSection = document.getElementById('presenca');
   const presentesSection = document.getElementById('presentes');
   const adesaoBox = document.querySelector('.adesao-box');
 
-  if (heroSection && infoSection && presencaSection && presentesSection && adesaoBox) {
+  if (heroSection && infoSection && presentesSection && adesaoBox) {
     const contribuicaoSection = document.createElement('section');
     contribuicaoSection.id = 'contribuicao';
     contribuicaoSection.innerHTML = `
       <div class="section-inner">
         <span class="section-label reveal">Celebre conosco</span>
-        <h2 class="section-title reveal">Contribuição</h2>
+        <h2 class="section-title reveal">Confirmações encerradas</h2>
         <div class="gold-divider reveal"><div class="gold-divider-diamond"></div></div>
       </div>`;
     heroSection.insertAdjacentElement('afterend', contribuicaoSection);
     contribuicaoSection.querySelector('.section-inner').appendChild(adesaoBox);
-    contribuicaoSection.insertAdjacentElement('afterend', presencaSection);
-    presencaSection.insertAdjacentElement('afterend', presentesSection);
+    contribuicaoSection.insertAdjacentElement('afterend', presentesSection);
   }
 
 
@@ -1894,7 +1762,7 @@
   document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
   // ── Nav dots ativos
-  const sections = ['hero','contribuicao','presenca','presentes','info','programacao','cardapio','localizacao'];
+  const sections = ['hero','contribuicao','presentes','info','programacao','cardapio','localizacao'];
   const sectionEls = sections.map(id => document.getElementById(id));
   const dots = document.querySelectorAll('.nav-dot');
 
@@ -1947,53 +1815,6 @@
     fecharModal();
   }
 
-
-  function copiarPixSucesso() {
-    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
-    navigator.clipboard.writeText(chave).then(() => {
-      document.getElementById('pix-copiado-msg').style.display = 'block';
-    }).catch(() => {
-      prompt('Copie a chave PIX:', chave);
-    });
-  }
-
-  function showTab(tab) {
-    const isPix = tab === 'pix';
-    document.getElementById('tab-pix-content').style.display = isPix ? 'block' : 'none';
-    document.getElementById('tab-link-content').style.display = isPix ? 'none' : 'block';
-    document.getElementById('tab-pix').style.background = isPix ? 'var(--gold)' : 'transparent';
-    document.getElementById('tab-pix').style.color = isPix ? 'var(--cream)' : 'var(--gold)';
-    document.getElementById('tab-link').style.background = isPix ? 'transparent' : 'var(--gold)';
-    document.getElementById('tab-link').style.color = isPix ? 'var(--gold)' : 'var(--cream)';
-  }
-
-  function copiarPix() {
-    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
-    navigator.clipboard.writeText(chave).then(() => {
-      const btn = document.getElementById('btn-copiar');
-      btn.textContent = '✓ Copiado!';
-      btn.style.borderColor = 'var(--gold-dark)';
-      btn.style.color = 'var(--gold-dark)';
-      setTimeout(() => {
-        btn.textContent = '📋 Copiar chave';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-      }, 2500);
-    });
-  }
-
-
-
-  function copiarPixPresente(tipo) {
-    const chave = '00020126460014br.gov.bcb.pix0111357553718650209Casamento5204000053039865802BR5913PAMELLA_ALVES6006FRANCA62290525KqRrmMrFZsxpb2D7hVQXRhwya63042F7F';
-    navigator.clipboard.writeText(chave).then(() => {
-      const msg = document.getElementById('pix-presente-msg');
-      msg.textContent = '✓ Chave PIX copiada! Cole no seu banco e informe o valor desejado para ' + tipo + '.';
-      msg.style.display = 'block';
-    }).catch(() => {
-      prompt('Copie a chave PIX:', chave);
-    });
-  }
 
   // ── Google Sheets + Lista de nomes
   const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxLcYPjAqX1ml19GTkZOwFCc5ZP8AEM_dhnCuuo5Ty4TxaazzjIjvHxzqEMMKyuH7NqUw/exec';
